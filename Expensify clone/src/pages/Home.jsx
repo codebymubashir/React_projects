@@ -4,6 +4,7 @@ import Greenbtn from '../components/Greenbtn'
 import { FaStar } from "react-icons/fa";
 import Featurcard from '../components/Featurcard';
 import Reviewscard from '../components/Reviewscard';
+import Expencardz from '../components/Expencardz';
 const Home = () => {
     return (
         <>
@@ -67,12 +68,19 @@ const Home = () => {
                 </div>
             </div>
         </div>
+
+
+
         <div className='w-full h-60 bg-[#085239]'>
             <div className='w-full h-20'>
                 <p className='frances text-white text-3xl text-center p-4'>Join 15 million+ members who trust Expensify</p>
             </div>
                {/* logos here  */}
         </div>
+
+
+
+
         <div className='w-full h-[170vh] flex flex-col gap-5 bg-[#061b09]'>
             <p className='frances text-white text-4xl text-center p-20'>Features</p>
             <div className="grid grid-cols-3 gap-2 pl-15 px-8">
@@ -99,14 +107,53 @@ const Home = () => {
 
 
 
+        <div className='w-full h-screen bg-[#07271f]'>
+            <div className='w-full h-60'>
+                <h2 className='frances text-5xl p-14 text-center text-white'>Try Expensify free for 30 days</h2>
+                <div className='w-full flex flex-row text-white justify-center gap-4'>
+                    <button className='w-35 h-15 rounded-4xl font-bold bg-[#1a3d32]'>Employes</button>
+                    <button className='w-35 h-15 rounded-4xl font-bold bg-[#07271f] hover:bg-[#1a3d32] '>Business</button>
+                    <button className='w-35 h-15 rounded-4xl font-bold bg-[#07271f] hover:bg-[#1a3d32] '>Finance</button>
+                </div>
 
-        <div className='w-full h-screen border-2 bg-[#1a3d32] border-black'>
-            <div className='w-full h-35 border-2 border-white p-12'>
+            </div>
+            <div className='w-full h-90  grid grid-cols-3 gap-0 pl-18 pt-15'>
+                <Expencardz image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__smartscan.svg" title="1. Scan receipts" des="Scan receipts via the mobile app, drag-and-drop." />
+                <Expencardz image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__reports.svg" title="2. Submit reports" des="Concierge AI automatically categorizes and submits your expenses for reimbursement."/>
+                <Expencardz image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__sendmoney.svg" title="3. Get reimbursed" des="Get paid back directly to your bank account in as little as one business day."/>
+
+            </div>
+
+        </div>
+
+
+        <div className='w-full h-[120vh]  bg-[#1a3d32]'>
+            <div className='w-full h-35  p-12'>
                 <h2 className='frances text-4xl text-white text-center'>Highly rated, easy to use</h2>
             </div>
-            <div className='w-full h-110 border-2 border-white'>
-                <Reviewscard title="hello"/>
+            <div className='w-full h-100  pl-20 grid grid-cols-3'>
+                <Reviewscard title="“The easiest expense tool I've ever used.”" des="“It is very very easy, as soon as you get a receipt you can scan it, the AI will capture all relevant information and it is very little interaction to get to the final sumbmission of the expense. It is so easy!!!”" image="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/author_luis.png" heading="Luis F."/>
+                <Reviewscard title="“Great Program!”" des="“Expensify has a great UI interface and is very intuitive to use. I particularly like the funcitonality of taking a picture of a receipt and having it uploaded to my account. I also like that I can send an email and the smart-scanner puts it into my expenses.”" image="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/author_weston.png" heading="Weston M."/>
+                <Reviewscard title="“Simple, Straight-forward Expenses!”" des="“I've never met someone that enjoys doing their expenses. Following business trips or even a few weeks in the office, the last thing that someone wants to do is take time out of their day/week" image="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/author_christy.png" heading="Kirsten H."/>
 
+            </div>
+            <div className='w-full h-44 flex flex-row'>
+                 <div className='w-full h-20  mt-5 ml-28 p-6 flex flex-row gap-3 '>
+                        <img className='w-10 h-7' src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_G2.svg" alt="" />
+                        <div className='flex flex-row text-yellow-400'>
+                            <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        </div>
+                        <p className='text-white'>4,200+ 5-star reviews</p>
+                    </div>
+                    <div className='flex flex-row mt-5 p-6 mr-38 gap-6 '>
+                        <img className='w-15 h-15' src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/badge_g2.svg" alt="" />
+                        <img className='w-15 h-15' src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/badge_tr.svg" alt="" />
+                        <img className='w-15 h-15' src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/badge_capterra.svg" alt="" />
+                    </div>
             </div>
          </div>
 
