@@ -5,7 +5,7 @@ import { FaStar, FaGithub, FaPinterest } from "react-icons/fa";
 import Featurcard from '../components/Featurcard';
 import Reviewscard from '../components/Reviewscard';
 import Expencardz from '../components/Expencardz';
-import BgCards from '../components/bgcards';
+import Bgcards from '../components/Bgcards';
 import Footer from '../components/Footer';
 const Home = () => {
     return (
