@@ -2,8 +2,11 @@ import React from 'react'
 import Card from '../components/Card'
 import Greenbtn from '../components/Greenbtn'
 import { FaStar } from "react-icons/fa";
+import Featurcard from '../components/Featurcard';
+import Reviewscard from '../components/Reviewscard';
 const Home = () => {
     return (
+        <>
         <div className='w-full h-[140vh] bg-[#0B2E1F] relative p-10'>
             <svg className="absolute top-5 inset-0 w-full h-full" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice">
                 <g fill="none" stroke="#15402C" strokeWidth="1.5">
@@ -17,8 +20,8 @@ const Home = () => {
                     <path d="M -20 330 C 140 290, 240 370, 360 330 S 600 290, 700 340" />
                 </g>
             </svg>
-            <div className=' relative text-white border-white flex flex-row h-[110vh]'>
-                <div className='border-2 border-white w-[50%] h-[130vh] flex flex-col gap-9'>
+            <div className=' relative text-white flex flex-row h-[110vh]'>
+                <div className=' w-[50%] h-[130vh] flex flex-col gap-9'>
                     <p className='font-bold text-3xl'>Expensify</p>
                     <p className='text-5xl frances'>The <span className='text-[#03D47C] frances'>easiest</span> way <br></br> to do your expenses</p>
                     <ul className='flex flex-col gap-5 w-'>
@@ -26,8 +29,8 @@ const Home = () => {
                         <li> <b>✓</b>  Bring your own cards (BYOC). You don't have to switch corporate cards to use Expensify.</li>
                         <li> <b>✓</b> 45+ integrations. QuickBooks, NetSuite, Sage Intacct, Xero, Workday, Gusto, and so much more.</li>
                     </ul>
-                    <div className=' w-full h-35 mt-0  border-white'>
-                        <p className='w-full  border-white font-bold'>I want too:</p>
+                    <div className=' w-full h-35 mt-0 '>
+                        <p className='w-full  font-bold'>I want too:</p>
                         <div className='w-full h-35 flex flex-row mt-2 gap-4'>
                             <Card title="Organize my own expenses"/>
                             <Card title="Manage expenses for 1-9 employees"/>
@@ -35,12 +38,21 @@ const Home = () => {
                         </div>
 
                     </div>
+                    <div className='w-full h-25 relative justify-center items-center p-4'>
+                        <input className='w-140 h-15 rounded-4xl ml-[-1rem] bg-white text-black pl-4' type="text" placeholder='Enter your Email or Phone Number'/>
+                        <button className='absolute top-5 right-9 bg-[#03D47C] w-58 h-13 rounded-4xl ml-122 font-bold'>Get Started For Free</button>
+                    </div>
+                    <div className='w-full h-15  flex flex-row gap-3'>
+                        <p className='text-base'>Or Get Started with</p>
+                        <img className='bg-white w-7 h-7 rounded-4xl p-1' src="https://d2k5nsl2zxldvw.cloudfront.net/images/icons/sign-in/google.svg" alt="" />
+
+                    </div>
                 </div>
-                <div className='w-[50%] h-[130vh] border-2 border-white'>
+                <div className='w-[50%] h-[130vh]'>
                     <Greenbtn/>
                     <div className='w-full h-20  mt-5 p-6 flex flex-row gap-3 '>
                         <img className='w-10 h-7 ml-auto' src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_G2.svg" alt="" />
-                        <div className='flex flex-row'>
+                        <div className='flex flex-row text-yellow-400'>
                             <FaStar />
                         <FaStar />
                         <FaStar />
@@ -55,6 +67,95 @@ const Home = () => {
                 </div>
             </div>
         </div>
+        <div className='w-full h-60 bg-[#085239]'>
+            <div className='w-full h-20'>
+                <p className='frances text-white text-3xl text-center p-4'>Join 15 million+ members who trust Expensify</p>
+            </div>
+               {/* logos here  */}
+        </div>
+        <div className='w-full h-[170vh] flex flex-col gap-5 bg-[#061b09]'>
+            <p className='frances text-white text-4xl text-center p-20'>Features</p>
+            <div className="grid grid-cols-3 gap-2 pl-15 px-8">
+                <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__money-receipt.svg" title="Expense management" des="Automatically create, submit, approve, and reimburse expenses. Reports automatically sync with accounting." btn="Learn More"/>
+                <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__luggage.svg" title="Travel" des="Book flights, hotels, cars, and rail right in the app. Every booking syncs with your expenses for total T&E." btn="Learn More"/>
+                <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__handcard.svg" title="Expensify Card" des="The Expensify Visa® Commercial Card earns cash back on US purchases and lowers your Expensify bill." btn="Learn More"/>
+            </div>
+            <div className="grid grid-cols-3 gap-2 pl-15 px-8">
+                <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__smartscan.svg" title="Receipt scanning" des="Snap a photo, forward to receipts@expensify.com, or upload a file – we’ll scan the details!" btn="Learn More"/>
+                <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__vertical-credit-cards.svg" title="Bring your own cards (BYOC)" des="Link the corporate cards you already have for automatic reconciliation. 10k+ banks supported globally." btn="Learn More"/>
+                <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__earth.svg" title="Global reimbursements" des="Reimburse employees or independent contractors anywhere in the world, in their local currency." btn="Learn More"/>
+
+            </div>
+            <div className="grid grid-cols-3 gap-2 pl-15 px-8">
+                <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__virtualcard.svg" title="Virtual cards" des="Instantly issue unlimited virtual cards for employees, vendors, or projects. Free with every Expensify Card." btn="Learn More"/>
+                <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__report-receipt.svg" title="Expense reports" des="Submit, review, and approve expenses in seconds. Expensify handles the matching and policy checks." btn="Learn More"/>
+                <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__concierge-bot.svg" title="Al-powered expenses" des="Automate expense categorization, flag policy violations, enforce rules, and reduce manual errors with Expensify's Concierge Al." btn="Learn More"/>
+
+            </div>
+            <div className='w-full justify-center px-140 items-center'>
+            <button className='bg-[#1a3d32] w-35 h-15  rounded-4xl text-white text-base text-center'>All Features</button>
+            </div>
+        </div>
+
+
+
+
+        <div className='w-full h-screen border-2 bg-[#1a3d32] border-black'>
+            <div className='w-full h-35 border-2 border-white p-12'>
+                <h2 className='frances text-4xl text-white text-center'>Highly rated, easy to use</h2>
+            </div>
+            <div className='w-full h-110 border-2 border-white'>
+                <Reviewscard title="hello"/>
+
+            </div>
+         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div className='logoimg w-full h-screen'></div>
+        <div className='w-full h-85 bg-[#1a3d32] flex flex-row'>
+            <div className='w-[50%] h-85 text-white flex flex-col gap-4 p-12'>
+                <h2 className='frances text-4xl mt-4 '>Ready to simplify your receipt and expense management process?</h2>
+                <p className='text-based'>Enter your email or phone number to make your company's money go further with Expensify's time-saving spend management too</p>
+            </div>
+            <div className='w-[50%] h-85  text-white pt-20'>
+                 <div className='w-full h-25 relative justify-center items-center p-4'>
+                        <input className='w-140 h-15 rounded-4xl ml-[-1rem] bg-white text-black pl-4' type="text" placeholder='Enter your Email or Phone Number'/>
+                        <button className='absolute top-5 right-19 bg-[#03D47C] w-58 h-13 rounded-4xl ml-122 font-bold'>Get Started For Free</button>
+                    </div>
+                    <div className='w-full h-15  flex flex-row gap-3'>
+                        <p className='text-base'>Or Get Started with</p>
+                        <img className='bg-white w-7 h-7 rounded-4xl p-1' src="https://d2k5nsl2zxldvw.cloudfront.net/images/icons/sign-in/google.svg" alt="" />
+
+                    </div>
+            </div>
+
+        </div>
+        </>
+
     )
 }
 

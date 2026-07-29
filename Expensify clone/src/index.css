@@ -4,3 +4,10 @@
 .frances{
   font-family: "Fraunces", serif;
 }
+
+.logoimg{
+  background-image: url(./assets/expensify.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
