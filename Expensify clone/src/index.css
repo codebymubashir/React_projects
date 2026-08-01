@@ -24,4 +24,11 @@
 
   li:hover{
     color: rgb(99, 99, 252);
-  }
+  };
+
+.icons:hover{
+  color: rgb(3, 212, 124);
+}
+.spends:hover{
+  background-color: #1a3d32;
+}

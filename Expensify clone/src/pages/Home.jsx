@@ -7,9 +7,14 @@ import Reviewscard from '../components/Reviewscard';
 import Expencardz from '../components/Expencardz';
 import Bgcards from '../components/Bgcards';
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 const Home = () => {
+
+
     return (
         <>
+
+        
             <div className='w-full h-[140vh] bg-[#0B2E1F] relative p-10'>
                 <svg className="absolute top-5 inset-0 w-full h-full" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice">
                     <g fill="none" stroke="#15402C" strokeWidth="1.5">
@@ -52,7 +57,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='w-[50%] h-[130vh]'>
-                        <Greenbtn />
+                        <Link to={"/homes"} ><Greenbtn /></Link>
                         <div className='w-full h-20  mt-5 p-6 flex flex-row gap-3 '>
                             <img className='w-10 h-7 ml-auto' src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_G2.svg" alt="" />
                             <div className='flex flex-row text-yellow-400'>
