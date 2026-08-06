@@ -1,14 +1,22 @@
-import Navbar from "./components/navbar";
-import Home from "./page/Home";
+import React, {useState} from 'react'
 
-function App() {
+const App = () => {
+
+  const [count,setcount] = useState(4)
+  function handledecrement(){
+    setcount(count - 1)
+  }
+  function handleincrement(){
+    setcount(count + 1)
+  }
   return (
-    <>
-      <Navbar  />
+    <div className='flex flex-row gap-4 w-full h-auto'>
 
-      <Home/>
-      </>
+      <button onClick={handledecrement} className='btn'>-</button>
+      <span>{count}</span>
+      <button onClick={handleincrement} className='btn'>+</button>
+    </div>
   )
 }
-``
-export default App;
+
+export default App
