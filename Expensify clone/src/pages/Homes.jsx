@@ -5,6 +5,7 @@ const Homes = () => {
   const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [ID, setID] = useState(false);
 
   const API = "https://jsonplaceholder.typicode.com/users";
 
@@ -38,6 +39,23 @@ const Homes = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
+
+    if (ID) {
+
+      let updatuser= {name ,email}
+
+      const usersdata  = users.map((p)=>p.id===ID?updatuser:p)
+      setUsers(usersdata)
+
+      console.log(usersdata);
+      
+      
+    }
+return
+
+
+
     const newUser = {
       id: users.length + 1,
       name,
@@ -58,6 +76,17 @@ const Homes = () => {
       console.log(err);
     }
   };
+
+
+
+  const handleedit=(u)=>{
+    console.log(u);
+    setEmail(u.email)
+    setName(u.name)
+    setID(u.id)
+    
+
+  }
 
   return (
     <>
@@ -89,7 +118,7 @@ const Homes = () => {
           </div>
 
           <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg">
-            Add User
+           {ID?"update user": "add user"}
           </button>
         </form>
       </div>
@@ -133,6 +162,12 @@ const Homes = () => {
                         className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
                       >
                         Delete
+                      </button>
+                      <button
+                        onClick={() => handleedit(item)}
+                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+                      >
+                        edit
                       </button>
                     </td>
                   </tr>

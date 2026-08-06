@@ -14,8 +14,8 @@ const Worksp = () => {
             <button className="text-white font-bold p-3 rounded-4xl bg-[#03d47c]">Domain</button>
           </div>
         </div>
-        <div className="flex flex-col gap-3  w-[50%] mt-20 ml-90 text-center  h-auto p-10">
-                    <img className="w-110 h-70 border ml-47" src={Image} alt="" />
+        <div className="flex flex-col gap-3  w-[50%]  ml-90 text-center  h-auto p-10">
+                    <img className="w-80 h-50 border ml-17" src={Image} alt="" />
                     <h2 className="text-white text-3xl text-center font-bold frances">No workspaces yet</h2>
                     <p className="text-[#a7b4a8] text-center text-base">Create a workspace to manage your expenses, reimbursements, and company cards.</p>
                     <div className="flex flex-row gap-3  justify-center">

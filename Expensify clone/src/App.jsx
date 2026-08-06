@@ -7,7 +7,8 @@ import Spend from "./pages/Spend";
 import Worksp from "./pages/Worksp";
 import Spendexpen from "./pages/Spendexpen";
 import Spendreport from "./pages/Spendreport";
-import Accounts from "./pages/Accounts";
+import Accounts from "./pages/Account/Accounts";
+import Accountprofile from "./pages/Account/pages/Accountprofile";
 function App() {
   return (
     <>
@@ -22,7 +23,9 @@ function App() {
           <Route path="report" element={<Spendreport/>}/>
         </Route>
         <Route path="/worksp" element={<Worksp />} />
-        <Route path="/accounts" element={<Accounts />} />
+        <Route path="/accounts" element={<Accounts />} >
+          <Route path="profile" element={<Accountprofile/>} />
+        </Route>
       </Routes>
       
     </>

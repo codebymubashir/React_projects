@@ -51,7 +51,7 @@ const Inbox = () => {
             <h2 className="text-white text-center text-3xl mt-2">Natasha</h2>
           </div>
 
-          <div className="flex-1 overflow-y-auto border border-white">
+          <div className="flex-1 overflow-y-auto border border-[#1a3d32]">
             <ul>
               {items.map((item, index) => (
                 <li className="text-white text-2xl px-3" key={index}>
