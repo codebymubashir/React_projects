@@ -13,7 +13,7 @@ const Accountprofile = () => {
             <h2 className='frances text-2xl'>Profile</h2>
             
         </div>
-        <div className='w-150 h-auto mt-10 ml-4 p-8 flex flex-col gap-4 rounded-2xl border border-white bg-[#072419]'>
+        <div className='w-170 h-auto mt-10 ml-4 p-8 flex flex-col gap-4 rounded-2xl  bg-[#072419]'>
          <div>
            <p className='frances text-2xl text-white'>Public</p>
           <p className='text-md text-white/80'>These details are displayed on your public profile. Anyone can see them.</p>
@@ -48,7 +48,31 @@ const Accountprofile = () => {
             <p className='text-[#52675c] pt-4'><FaChevronRight/></p>
           </div>
 
-          <button className='rounded-2xl p-2 text-white bg-[#1a3d32]'>Share</button>
+          <button className='w-[12%] h-10 rounded-4xl bg-[#1A3D32] hover:bg-green-400 flex justify-center items-center text-center font-semibold m-3 text-white'>Share</button>
+        </div>
+        <div className='bg-[#072419]  w-[75%] h-auto rounded-xl m-5 p-7 flex flex-col gap-9'>
+
+          <p className='frances text-2xl text-white'>Private</p>
+          <p className='text-md text-white/80'>These details are used for travel and payments. They're never shown on your public profile.</p>
+
+          <div className='flex flex-col gap-5'>
+            <div className='hover:bg-[#0A2E25] p-3'>
+              <p className='text-lg text-white/80'>Legal Name</p>
+            </div>
+
+            <div className='hover:bg-[#0A2E25] p-3'>
+              <p className='text-lg text-white/80'>Date of birth</p>
+            </div>
+
+            <div className='hover:bg-[#0A2E25] p-3'>
+              <p className='text-lg text-white/80'>Phone number</p>
+            </div>
+
+            <div className='hover:bg-[#0A2E25] p-3'>
+              <p className='text-lg text-white/80'>Address</p>
+            </div>
+
+          </div>
         </div>
 
     </>

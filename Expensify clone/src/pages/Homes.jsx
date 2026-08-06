@@ -1,181 +1,176 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 
 const Homes = () => {
-  const [users, setUsers] = useState([]);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [ID, setID] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [title, setTitle] = useState("");
+  const [subtitle, setSubtitle] = useState("");
+  const [paragraph, setParagraph] = useState("");
+  const [image, setImage] = useState("");
+  const [editId, setEditId] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const API = "https://jsonplaceholder.typicode.com/users";
 
-  // GET USERS
-  const getUsers = async () => {
-    try {
-      const res = await axios.get(API);
-      setUsers(res.data);
-    } catch (err) {
-      console.log(err);
-    }
+  const handleDelete = (id) => {
+    const newPosts = posts.filter((item) => item.id !== id);
+    setPosts(newPosts);
   };
 
-  useEffect(() => {
-    getUsers();
-  }, []);
-
-  // DELETE USER
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`${API}/${id}`);
-
-      const newUsers = users.filter((item) => item.id !== id);
-      setUsers(newUsers);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  // ADD USER
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-
-
-    if (ID) {
-
-      let updatuser= {name ,email}
-
-      const usersdata  = users.map((p)=>p.id===ID?updatuser:p)
-      setUsers(usersdata)
-
-      console.log(usersdata);
-      
-      
+    if (editId) {
+      const updatedPost = { id: editId, title, subtitle, paragraph, image };
+      const newPosts = posts.map((p) =>
+        p.id === editId ? updatedPost : p
+      );
+      setPosts(newPosts);
+    } else {
+      const newPost = {
+        id: posts.length + 1,
+        title,
+        subtitle,
+        paragraph,
+        image,
+      };
+      setPosts([...posts, newPost]);
     }
-return
 
-
-
-    const newUser = {
-      id: users.length + 1,
-      name,
-      email,
-      phone: "N/A",
-      website: "N/A",
-    };
-
-    try {
-      await axios.post(API, newUser);
-
-      setUsers([...users, newUser]);
-
-      // Clear inputs
-      setName("");
-      setEmail("");
-    } catch (err) {
-      console.log(err);
-    }
+    setTitle("");
+    setSubtitle("");
+    setParagraph("");
+    setImage("");
+    setEditId(null);
+    setIsOpen(false);
   };
 
-
-
-  const handleedit=(u)=>{
-    console.log(u);
-    setEmail(u.email)
-    setName(u.name)
-    setID(u.id)
-    
-
-  }
+  const handleEdit = (post) => {
+    setTitle(post.title);
+    setSubtitle(post.subtitle);
+    setParagraph(post.paragraph);
+    setImage(post.image);
+    setEditId(post.id);
+    setIsOpen(true);
+  };
 
   return (
     <>
-      {/* Form */}
-      <div className="max-w-xl mx-auto mt-10 bg-white shadow-lg rounded-xl p-6">
-        <h2 className="text-2xl font-bold mb-5">Add User</h2>
+      <div className="p-6">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="bg-black text-white px-6 py-3 rounded-full font-semibold"
+        >
+          + Add New Post
+        </button>
+      </div>
+      {isOpen && (
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 bg-black/40 z-40"
+        />
+      )}
+      <div
+        className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-yellow-400 shadow-2xl z-50 p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+      >
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-3xl font-bold">
+            {editId ? "Update Post" : "Add new post"}
+          </h2>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="text-2xl font-bold"
+          >
+            ×
+          </button>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="font-semibold">Name</label>
-
+            <label className="font-semibold text-lg">Title</label>
             <input
               type="text"
-              className="w-full border rounded-lg p-2 mt-1"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              className="w-full border rounded-lg p-2 mt-1 bg-yellow-300"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
 
           <div>
-            <label className="font-semibold">Email</label>
-
+            <label className="font-semibold text-lg">Subtitle</label>
             <input
-              type="email"
-              className="w-full border rounded-lg p-2 mt-1"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              className="w-full border rounded-lg p-2 mt-1 bg-yellow-300"
+              value={subtitle}
+              onChange={(e) => setSubtitle(e.target.value)}
             />
           </div>
 
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg">
-           {ID?"update user": "add user"}
+          <div>
+            <label className="font-semibold text-lg">Paragraph</label>
+            <textarea
+              className="w-full border rounded-lg p-2 mt-1 bg-yellow-300"
+              rows="4"
+              value={paragraph}
+              onChange={(e) => setParagraph(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label className="font-semibold text-lg">Image URL</label>
+            <input
+              type="text"
+              className="w-full border rounded-lg p-2 mt-1 bg-yellow-300"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            />
+          </div>
+
+          <button className="bg-black hover:bg-gray-800 text-white px-5 py-3 rounded-full w-full font-semibold">
+            {editId ? "Update Post" : "Add Post"}
           </button>
         </form>
       </div>
-
-      {/* Table */}
       <div className="min-h-screen bg-gray-100 py-10 px-6">
-        <div className="max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6">
-            <h1 className="text-3xl font-bold">Users List</h1>
-            <p className="text-blue-100 mt-1">
-              Manage your users with React CRUD
-            </p>
-          </div>
+        <div className="max-w-4xl mx-auto space-y-6">
+          <h1 className="text-3xl font-bold text-center mb-6">Blog Posts</h1>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
-              <thead className="bg-gray-800 text-white">
-                <tr>
-                  <th className="px-6 py-4">Name</th>
-                  <th className="px-6 py-4">Email</th>
-                  <th className="px-6 py-4">Phone</th>
-                  <th className="px-6 py-4">Website</th>
-                  <th className="px-6 py-4 text-center">Action</th>
-                </tr>
-              </thead>
+          {posts.map((post) => (
+            <div
+              key={post.id}
+              className="bg-white rounded-2xl shadow-xl overflow-hidden"
+            >
+              {post.image && (
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-56 object-cover"
+                />
+              )}
 
-              <tbody>
-                {users.map((item) => (
-                  <tr
-                    key={item.id}
-                    className="border-b hover:bg-blue-50"
+              <div className="p-6">
+                <h2 className="text-2xl font-bold">{post.title}</h2>
+                <h4 className="text-lg text-gray-500 mb-3">
+                  {post.subtitle}
+                </h4>
+                <p className="text-gray-700">{post.paragraph}</p>
+
+                <div className="mt-4 flex gap-3">
+                  <button
+                    onClick={() => handleEdit(post)}
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg"
                   >
-                    <td className="px-6 py-4 font-semibold">{item.name}</td>
-                    <td className="px-6 py-4">{item.email}</td>
-                    <td className="px-6 py-4">{item.phone}</td>
-                    <td className="px-6 py-4">{item.website}</td>
-
-                    <td className="px-6 py-4 text-center">
-                      <button
-                        onClick={() => handleDelete(item.id)}
-                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
-                      >
-                        Delete
-                      </button>
-                      <button
-                        onClick={() => handleedit(item)}
-                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
-                      >
-                        edit
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-
-            </table>
-          </div>
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(post.id)}
+                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>

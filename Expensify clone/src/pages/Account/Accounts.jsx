@@ -34,23 +34,23 @@ const Accounts = () => {
         <p className="text-[#9da99e] text-sm px-4 pt-2 pb-1">Account</p>
         <div className="flex flex-col px-2">
           <Link to={"profile"} className="w-full block">
-            <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left bg-[#1a3d32] text-white w-full">
+            <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left hover:bg-[#1a3d32] text-white w-full">
               <CgProfile className="text-xl" />
               <span className="font-bold text-sm">Profile</span>
             </button>
           </Link>
 
-          <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#0d2419]">
+          <Link to={"wallet"} className="w-full block"><button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] w-full hover:bg-[#1a3d32]">
             <MdOutlineMailOutline className="text-xl" />
             <span className="font-bold text-sm">Wallet</span>
-          </button>
+          </button></Link>
 
-          <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#0d2419]">
+          <Link to={"rules"} className="w-full block"><button className="flex flex-row items-center gap-3 px-3 py-3 w-full rounded-lg text-left text-[#9da99e] hover:bg-[#1a3d32]">
             <BsLightningCharge className="text-xl" />
             <span className="font-bold text-sm">Expense rules</span>
-          </button>
+          </button></Link>
 
-          <button className="flex flex-row items-center justify-between gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#0d2419]">
+          <button className="flex flex-row items-center justify-between gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#1a3d32]">
             <span className="flex flex-row items-center gap-3">
               <HiOutlineChip className="text-xl" />
               <span className="font-bold text-sm">Agents</span>
@@ -60,17 +60,17 @@ const Accounts = () => {
             </span>
           </button>
 
-          <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#0d2419]">
+          <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#1a3d32]">
             <IoSettingsOutline className="text-xl" />
             <span className="font-bold text-sm">Preferences</span>
           </button>
 
-          <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#0d2419]">
+          <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#1a3d32]">
             <HiOutlineUserGroup className="text-xl" />
             <span className="font-bold text-sm">Copilot</span>
           </button>
 
-          <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#0d2419]">
+          <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#1a3d32]">
             <LuLock className="text-xl" />
             <span className="font-bold text-sm">Security</span>
           </button>
@@ -81,7 +81,7 @@ const Accounts = () => {
         {/* General section */}
         <p className="text-[#9da99e] text-sm px-4 pt-1 pb-1">General</p>
         <div className="flex flex-col px-2">
-          <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#0d2419]">
+          <button className="flex flex-row items-center gap-3 px-3 py-3 rounded-lg text-left text-[#9da99e] hover:bg-[#1a3d32]">
             <IoHelpCircleOutline className="text-xl" />
             <span className="font-bold text-sm">Help</span>
           </button>

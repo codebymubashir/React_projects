@@ -9,6 +9,8 @@ import Spendexpen from "./pages/Spendexpen";
 import Spendreport from "./pages/Spendreport";
 import Accounts from "./pages/Account/Accounts";
 import Accountprofile from "./pages/Account/pages/Accountprofile";
+import Accountwallet from "./pages/Account/pages/Accountwallet";
+import Accountrules from "./pages/Account/pages/Accountrules";
 function App() {
   return (
     <>
@@ -25,6 +27,8 @@ function App() {
         <Route path="/worksp" element={<Worksp />} />
         <Route path="/accounts" element={<Accounts />} >
           <Route path="profile" element={<Accountprofile/>} />
+          <Route path="wallet" element={<Accountwallet/>} />
+          <Route path="rules" element={<Accountrules/>} />
         </Route>
       </Routes>
       
