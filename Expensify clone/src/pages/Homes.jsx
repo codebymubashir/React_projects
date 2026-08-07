@@ -57,16 +57,12 @@ const Homes = () => {
       <div className="p-6">
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-black text-white px-6 py-3 rounded-full font-semibold"
-        >
+          className="bg-black text-white px-6 py-3 rounded-full font-semibold">
           + Add New Post
         </button>
       </div>
       {isOpen && (
-        <div
-          onClick={() => setIsOpen(false)}
-          className="fixed inset-0 bg-black/40 z-40"
-        />
+        <div onClick={() => setIsOpen(false)} className="fixed inset-0 bg-black/40 z-40"/>
       )}
       <div
         className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-yellow-400 shadow-2xl z-50 p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
