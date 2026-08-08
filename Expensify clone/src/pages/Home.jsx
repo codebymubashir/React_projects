@@ -9,16 +9,18 @@ import Bgcards from '../components/Bgcards';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import Pagination from '../components/Pagination';
+import Login from '../components/Login';
 import Faq from '../components/Faq';
 const Home = () => {
 
 
-    const [open,setOpen] = useState(false)
+    const [open, setOpen] = useState(false)
+    const [showLogin, setShowLogin] = useState(false)
 
     return (
         <>
 
-        
+
             <div className='w-full h-[140vh] bg-[#0B2E1F] relative p-10'>
                 <svg className="absolute top-5 inset-0 w-full h-full" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice">
                     <g fill="none" stroke="#15402C" strokeWidth="1.5">
@@ -61,7 +63,12 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='w-[50%] h-[130vh]'>
-                        <Link to={"/homes"} ><Greenbtn /></Link>
+                        <div onClick={() => setShowLogin(true)}><Greenbtn /></div>
+                        {showLogin && (
+                            <div className='fixed inset-0 bg-black/60 flex justify-center items-center z-50'>
+                                <Login onClose={() => setShowLogin(false)} />
+                            </div>
+                        )}
                         <div className='w-full h-20  mt-5 p-6 flex flex-row gap-3 '>
                             <img className='w-10 h-7 ml-auto' src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_G2.svg" alt="" />
                             <div className='flex flex-row text-yellow-400'>
@@ -87,11 +94,11 @@ const Home = () => {
                     <p className='frances text-white text-3xl text-center p-4'>Join 15 million+ members who trust Expensify</p>
                 </div>
                 <div class="w-full bg-[#085239] py-16">
-                    
+
 
                     <div class="overflow-hidden whitespace-nowrap">
                         <div class="inline-flex animate-marquee">
-                            
+
                             <img src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_xero.svg" alt="Xero" class="h-10 mx-16 inline-block" />
                             <img src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_tribeca.svg" alt="Tribeca Film Festival" class="h-10 mx-16 inline-block" />
                             <img src="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/2024/logo_pinterest.svg" alt="Pinterest" class="h-10 mx-16 inline-block" />
@@ -135,41 +142,41 @@ const Home = () => {
 
                 {open && (
                     <>
-                    <div className="grid grid-cols-3 gap-2 pl-15 px-8">
-                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__piggybank.svg" title="Track expenses" des="Capture and categorize receipts, card transactions, mileage, and more for tax purposes." btn="Learn More" />
-                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__mobileapp.svg" title="Mobile app" des="Manage expenses, cards, and travel on the go. All functionality included." btn="Learn More" />
-                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__commentbubbles.svg" title="Chat" des="Chat directly on every expense to clear up any questions or confusion in realtime." btn="Learn More" />
-                </div>
-                <div className="grid grid-cols-3 gap-2 pl-15 px-8">
-                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__coins.svg" title="Spend management" des="Control company spend with smart limits, approvals, and visibility across every card and expense." btn="Learn More" />
-                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__chart.svg" title="Financial reporting" des="Build tailored reports to analyze spend, identify trends, and support smarter business decisions." btn="Learn More" />
-                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__moneyintowallet.svg" title="Budgets" des="Set, track, and manage budgets across teams and departments. Control spend before it happens." btn="Learn More" />
+                        <div className="grid grid-cols-3 gap-2 pl-15 px-8">
+                            <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__piggybank.svg" title="Track expenses" des="Capture and categorize receipts, card transactions, mileage, and more for tax purposes." btn="Learn More" />
+                            <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__mobileapp.svg" title="Mobile app" des="Manage expenses, cards, and travel on the go. All functionality included." btn="Learn More" />
+                            <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__commentbubbles.svg" title="Chat" des="Chat directly on every expense to clear up any questions or confusion in realtime." btn="Learn More" />
+                        </div>
+                        <div className="grid grid-cols-3 gap-2 pl-15 px-8">
+                            <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__coins.svg" title="Spend management" des="Control company spend with smart limits, approvals, and visibility across every card and expense." btn="Learn More" />
+                            <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__chart.svg" title="Financial reporting" des="Build tailored reports to analyze spend, identify trends, and support smarter business decisions." btn="Learn More" />
+                            <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__moneyintowallet.svg" title="Budgets" des="Set, track, and manage budgets across teams and departments. Control spend before it happens." btn="Learn More" />
 
-                </div>
+                        </div>
                     </>
                 )}
-                
+
                 <div className='w-full justify-center px-140 items-center'>
-                    <button onClick={()=>setOpen(!open)} className='bg-[#1a3d32] w-35 h-15  rounded-4xl text-white font-bold text-base text-center'>{open ? "Less Features": "All Features"}</button>
+                    <button onClick={() => setOpen(!open)} className='bg-[#1a3d32] w-35 h-15  rounded-4xl text-white font-bold text-base text-center'>{open ? "Less Features" : "All Features"}</button>
                 </div>
-                
+
             </div>
-           
+
 
 
             <div className='w-full h-screen border border-black bg-[#061b09]'>
                 <div className='w-full h-120 mt-8 pl-18 grid grid-cols-3 gap-3'>
-                    <Bgcards cta="Read More" image="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-pivotbio.jpg" logo=" AVIV" highlight1="Rolled out" highlight2="company-wide card, travel, and expense"/>
+                    <Bgcards cta="Read More" image="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-pivotbio.jpg" logo=" AVIV" highlight1="Rolled out" highlight2="company-wide card, travel, and expense" />
 
-                    <Bgcards cta="Read More" image="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-roadtrippers.jpg" logo="PIVOT BIO" highlight1="Funded their entire T&E program" highlight2="with Expensify Card cash back"/>
+                    <Bgcards cta="Read More" image="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-roadtrippers.jpg" logo="PIVOT BIO" highlight1="Funded their entire T&E program" highlight2="with Expensify Card cash back" />
 
-                    <Bgcards cta="Read More" image="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-philzcoffee.jpg" logo="REDMOND" highlight2="Achieved 50% faster" highlight1="client reimbursements"/>
+                    <Bgcards cta="Read More" image="https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-philzcoffee.jpg" logo="REDMOND" highlight2="Achieved 50% faster" highlight1="client reimbursements" />
 
                 </div>
 
             </div>
 
-            <Pagination/>
+            <Pagination />
 
             <div className='w-full h-[120vh]  bg-[#1a3d32]'>
                 <div className='w-full h-35  p-12'>
@@ -221,9 +228,9 @@ const Home = () => {
                 </div>
 
             </div>
-            <Faq/>
+            <Faq />
 
-            <Footer/>
+            <Footer />
         </>
 
     )
