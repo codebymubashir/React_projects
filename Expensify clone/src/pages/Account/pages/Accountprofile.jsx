@@ -118,7 +118,7 @@ const Accountprofile = () => {
             />
           </div>
         </div>
-        <div className='w-full h-auto mt-75'>
+        <div className='w-full h-auto mt-58'>
           <button className='w-full rounded-4xl text-xl text-white bg-[#03d47c] font-bold p-4'>Save</button>
         </div>
       </div>
