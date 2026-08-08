@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from '../components/Card'
 import Greenbtn from '../components/Greenbtn'
 import { FaStar, FaGithub, FaPinterest } from "react-icons/fa";
@@ -9,8 +9,11 @@ import Bgcards from '../components/Bgcards';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import Pagination from '../components/Pagination';
+import Faq from '../components/Faq';
 const Home = () => {
 
+
+    const [open,setOpen] = useState(false)
 
     return (
         <>
@@ -110,7 +113,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className='w-full h-[170vh] flex flex-col gap-5 bg-[#061b09]'>
+            <div className='w-full h-auto flex flex-col gap-5 bg-[#061b09]'>
                 <p className='frances text-white text-4xl text-center p-20'>Features</p>
                 <div className="grid grid-cols-3 gap-2 pl-15 px-8">
                     <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__money-receipt.svg" title="Expense management" des="Automatically create, submit, approve, and reimburse expenses. Reports automatically sync with accounting." btn="Learn More" />
@@ -129,10 +132,29 @@ const Home = () => {
                     <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__concierge-bot.svg" title="Al-powered expenses" des="Automate expense categorization, flag policy violations, enforce rules, and reduce manual errors with Expensify's Concierge Al." btn="Learn More" />
 
                 </div>
-                <div className='w-full justify-center px-140 items-center'>
-                    <button className='bg-[#1a3d32] w-35 h-15  rounded-4xl text-white font-bold text-base text-center'>All Features</button>
+
+                {open && (
+                    <>
+                    <div className="grid grid-cols-3 gap-2 pl-15 px-8">
+                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__piggybank.svg" title="Track expenses" des="Capture and categorize receipts, card transactions, mileage, and more for tax purposes." btn="Learn More" />
+                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__mobileapp.svg" title="Mobile app" des="Manage expenses, cards, and travel on the go. All functionality included." btn="Learn More" />
+                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__commentbubbles.svg" title="Chat" des="Chat directly on every expense to clear up any questions or confusion in realtime." btn="Learn More" />
                 </div>
+                <div className="grid grid-cols-3 gap-2 pl-15 px-8">
+                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__coins.svg" title="Spend management" des="Control company spend with smart limits, approvals, and visibility across every card and expense." btn="Learn More" />
+                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__chart.svg" title="Financial reporting" des="Build tailored reports to analyze spend, identify trends, and support smarter business decisions." btn="Learn More" />
+                    <Featurcard image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__moneyintowallet.svg" title="Budgets" des="Set, track, and manage budgets across teams and departments. Control spend before it happens." btn="Learn More" />
+
+                </div>
+                    </>
+                )}
+                
+                <div className='w-full justify-center px-140 items-center'>
+                    <button onClick={()=>setOpen(!open)} className='bg-[#1a3d32] w-35 h-15  rounded-4xl text-white font-bold text-base text-center'>{open ? "Less Features": "All Features"}</button>
+                </div>
+                
             </div>
+           
 
 
             <div className='w-full h-screen border border-black bg-[#061b09]'>
@@ -199,6 +221,7 @@ const Home = () => {
                 </div>
 
             </div>
+            <Faq/>
 
             <Footer/>
         </>
