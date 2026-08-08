@@ -8,6 +8,7 @@ import Expencardz from '../components/Expencardz';
 import Bgcards from '../components/Bgcards';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
+import Pagination from '../components/Pagination';
 const Home = () => {
 
 
@@ -146,25 +147,7 @@ const Home = () => {
 
             </div>
 
-            <div className='w-full h-screen bg-[#07271f]'>
-                <div className='w-full h-60'>
-                    <h2 className='frances text-5xl p-14 text-center text-white'>Try Expensify free for 30 days</h2>
-                    <div className='w-full flex flex-row text-white justify-center gap-4'>
-                        <button className='w-35 h-15 rounded-4xl font-bold bg-[#1a3d32]'>Employes</button>
-                        <button className='w-35 h-15 rounded-4xl font-bold bg-[#07271f] hover:bg-[#1a3d32] '>Business</button>
-                        <button className='w-35 h-15 rounded-4xl font-bold bg-[#07271f] hover:bg-[#1a3d32] '>Finance</button>
-                    </div>
-
-                </div>
-                <div className='w-full h-90  grid grid-cols-3 gap-0 pl-18 pt-15'>
-                    <Expencardz image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__smartscan.svg" title="1. Scan receipts" des="Scan receipts via the mobile app, drag-and-drop." />
-                    <Expencardz image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__reports.svg" title="2. Submit reports" des="Concierge AI automatically categorizes and submits your expenses for reimbursement." />
-                    <Expencardz image="https://d2k5nsl2zxldvw.cloudfront.net/images/illustrations/simple-illustration__sendmoney.svg" title="3. Get reimbursed" des="Get paid back directly to your bank account in as little as one business day." />
-
-                </div>
-
-            </div>
-
+            <Pagination/>
 
             <div className='w-full h-[120vh]  bg-[#1a3d32]'>
                 <div className='w-full h-35  p-12'>
