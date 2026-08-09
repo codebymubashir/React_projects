@@ -19,9 +19,14 @@ const Accountprofile = () => {
   const [emojiPicker, setEmojiPicker] = useState(false);
   const [selectedEmoji, setSelectedEmoji] = useState("");
   const [statusText, setStatusText] = useState("");
+  const [status, setStatus] = useState("");
   const [name, setName] = useState("");
   const [selected, setSelected] = useState("America/Los_Angeles");
   const [search, setSearch] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [firstNameInput, setFirstNameInput] = useState("");
+  const [lastNameInput, setLastNameInput] = useState("");
 
 
   const timezones = Intl.supportedValuesOf('timeZone');
@@ -106,6 +111,8 @@ const Accountprofile = () => {
             <label className='text-[#52675c] text-sm block'>First name</label>
             <input
               type='text'
+              value={firstNameInput}
+              onChange={(e) => setFirstNameInput(e.target.value)}
               className='bg-transparent text-white text-lg font-semibold w-full outline-none'
             />
           </div>
@@ -114,12 +121,20 @@ const Accountprofile = () => {
             <label className='text-[#52675c] text-sm block'>Last name</label>
             <input
               type='text'
+              value={lastNameInput}
+              onChange={(e) => setLastNameInput(e.target.value)}
               className='bg-transparent text-white text-lg font-semibold w-full outline-none'
             />
           </div>
         </div>
         <div className='w-full h-auto mt-58'>
-          <button className='w-full rounded-4xl text-xl text-white bg-[#03d47c] font-bold p-4'>Save</button>
+          <button
+            onClick={() => {
+              setFirstName(firstNameInput.trim());
+              setLastName(lastNameInput.trim());
+              setIsOpen3(false);
+            }}
+            className='w-full rounded-4xl text-xl text-white bg-[#03d47c] font-bold p-4'>Save</button>
         </div>
       </div>
 
@@ -171,7 +186,10 @@ const Accountprofile = () => {
             className='w-full bg-transparent border border-[#1f3d31] focus:border-[#03d47c] rounded-2xl p-4 text-white placeholder-[#52675c] outline-none transition-colors duration-200'
           />
         </div>
-        <div onClick={() => setIsOpen4(false)} className='w-full h-auto mt-75'>
+        <div onClick={() => {
+          setStatus(statusText.trim())
+          setIsOpen4(false)
+        }} className='w-full h-auto mt-60'>
           <button className='w-full rounded-4xl text-xl text-white bg-[#03d47c] font-bold p-4'>Save</button>
         </div>
       </div>
@@ -272,7 +290,10 @@ const Accountprofile = () => {
         <div className='pdiv rounded-lg p-2 flex flex-row'>
           <div onClick={() => setIsOpen3(true)} className=' w-full text-white'>
             <h2 className='text-white/80 text-sm'>Display Name</h2>
-            <p>Mubashir Imran</p>
+            <div className='flex flex-row gap-1 text-base text-white'>
+              <p>{firstName || "Mubashir"}</p>
+              <p>{lastName || "Imran"}</p>
+            </div>
           </div>
           <p className='text-[#52675c] pt-4'><FaChevronRight /></p>
         </div>
