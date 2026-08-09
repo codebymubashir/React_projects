@@ -12,8 +12,8 @@ import { Link } from 'react-router-dom';
 const Dashboard = () => {
   return (
     <div>
-      <div className='flex flex-row'>
-        <div className='w-20 h-[97vh] bg-[#061b09] border flex flex-col justify-between'>
+      <div className='flex flex-row '>
+        <div className='w-20 h-[100vh]  bg-[#061b09] border flex flex-col justify-between'>
 
           <div className='w-full h-94 flex flex-col text-4xl gap-6 p-3 items-center'>
 
