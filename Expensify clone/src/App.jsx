@@ -11,6 +11,7 @@ import Accounts from "./pages/Account/Accounts";
 import Accountprofile from "./pages/Account/pages/Accountprofile";
 import Accountwallet from "./pages/Account/pages/Accountwallet";
 import Accountrules from "./pages/Account/pages/Accountrules";
+import Agents from "./pages/Account/pages/Agents";
 function App() {
   return (
     <>
@@ -29,6 +30,7 @@ function App() {
           <Route path="profile" element={<Accountprofile/>} />
           <Route path="wallet" element={<Accountwallet/>} />
           <Route path="rules" element={<Accountrules/>} />
+          <Route path="agents" element={<Agents/>} />
         </Route>
       </Routes>
       

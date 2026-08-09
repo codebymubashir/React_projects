@@ -41,6 +41,7 @@ const Dashboard = () => {
               <MdManageAccounts className='icons w-8 h-8' />
               <p className='text-[10px]'>Account</p>
             </Link>
+            
 
           </div>
 
