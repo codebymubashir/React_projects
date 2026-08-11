@@ -22,7 +22,7 @@ const Inbox = () => {
     <>
       <div className="flex flex-row">
         <Dashboard />
-        <div className="w-90 h-[97vh] bg-[#061b09] border-2 border-[#1a3d32]">
+        <div className="w-90 h-85vh bg-[#061b09] border-2 border-[#1a3d32]">
           <h1 className="frances text-white text-4xl p-4">Inbox</h1>
           <div className="w-full h-20 flex flex-row gap-3 p-4 text-white">
             <button className="icons font-bold rounded-4xl border w-30 h-10">

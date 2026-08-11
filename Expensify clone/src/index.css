@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 
+
 .frances{
   font-family: "Fraunces", serif;
 }
@@ -78,3 +79,5 @@
 .checkbox:active ~ .slider::before {
   transform: translate(0);
 }
+
+
