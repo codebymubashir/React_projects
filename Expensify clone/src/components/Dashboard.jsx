@@ -11,11 +11,11 @@ import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   return (
-    <div className='flex flex-row h-full overflow-hidden'>
+    <div className='flex flex-row h-full  '>
 
-      <div className='w-20 h-full bg-[#061b09] border flex flex-col justify-between shrink-0'>
+      <div className='w-20 h-full bg-[#061b09]  flex flex-col justify-between shrink-0'>
 
-        <div className='w-full h-94 flex flex-col text-4xl gap-6 p-3 items-center'>
+        <div className='w-full h-94 flex flex-col text-4xl gap-6 p-2  items-center'>
 
           <Link to={"/homes"} className='flex flex-col icons items-center gap-1 text-[#8b9c8f]'>
             <IoMdHome className=' w-8 h-8' />
