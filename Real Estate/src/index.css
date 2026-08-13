@@ -1,27 +1,63 @@
 @import "tailwindcss";
 
-.frances{
+.frances {
   font-family: "Fraunces", serif;
 }
-.bgimg{
-    background-image: url(https://thumbs.dreamstime.com/b/modern-luxury-house-architectural-design-exterior-view-two-story-home-d-villa-grass-model-estate-garden-stunning-luxurious-360212266.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 120vh;
-    position: relative;
+
+.bgimg {
+  background-image: url(https://thumbs.dreamstime.com/b/modern-luxury-house-architectural-design-exterior-view-two-story-home-d-villa-grass-model-estate-garden-stunning-luxurious-360212266.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 120vh;
+  position: relative;
 }
-.nav{
+
+.nav {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; 
+  z-index: 1000;
 }
-.wrapper{
-    width: 100%;
-    height: 120vh;
-    position: absolute;
-    /* inset: 0; */
-    background-color: rgba(18, 35, 28, 0.6);
+
+.wrapper {
+  width: 100%;
+  height: 120vh;
+  position: absolute;
+  /* inset: 0; */
+  background-color: rgba(18, 35, 28, 0.6);
+}
+
+.searchbtn:hover {
+  background-color: #B0533C;
+}
+
+.page1 {
+  transform: translateY(50px);
+  animation: fadeUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aboutimg {
+  background-image: url(https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1000&auto=format&fit=crop);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
