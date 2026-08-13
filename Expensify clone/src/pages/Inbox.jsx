@@ -54,8 +54,8 @@ const Inbox = () => {
           <div className="flex-1 overflow-y-auto border border-[#1a3d32]">
             <ul>
               {items.map((item, index) => (
-                <li className="text-white text-2xl px-3" key={index}>
-                  {item}
+                <li className="flex flex-col text-white text-2xl px-3" key={index}>
+                   Natasha {item}
                 </li>
               ))}
             </ul>
