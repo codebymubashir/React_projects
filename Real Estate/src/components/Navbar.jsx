@@ -1,0 +1,38 @@
+import React from 'react'
+import Homeicon from '../assets/icon-transparent.png'
+import { MdOutlineMenu } from "react-icons/md";
+import { useState } from 'react';
+
+const Navbar = () => {
+
+    const [open,setOpen] = useState(false)
+  return (
+    <div className='nav sm:w-full h-auto flex flex-row justify-between md:pl-12 p-5 relative'>
+      <div className='flex items-center gap-1'>
+         <img src={Homeicon} alt="Logo" className='w-8 h-8 object-contain' />
+         <p className='frances text-white text-md  md:text-2xl font-semibold'>Vintage <span className='text-[#c9a868]'>Estates</span> </p>
+      </div>
+      <div className='md:hidden'>
+        <button onClick={()=>setOpen(!open)}><MdOutlineMenu size={30}/></button>
+      </div>
+       {open && (
+        <ul className='absolute top-full left-0 w-full bg-[#a48d5d] flex flex-col items-center gap-6 py-6 md:hidden shadow-lg'>
+          <li className='frances text-black text-md font-semibold'><a href="">Home</a></li>
+          <li className='frances text-black text-md font-semibold'><a href="">Listings</a></li>
+          <li className='frances text-black text-md font-semibold'><a href="">About</a></li>
+          <li className='frances text-black text-md font-semibold'><a href="">Contact</a></li>
+        </ul>
+      )}
+      <div className='hidden md:block'>
+        <ul className='flex flex-row text-white uppercase gap-4 w-120 h-auto p-5 justify-around '>
+            <li>Home</li>
+            <li>About</li>
+            <li>Journal</li>
+            <li>Contact</li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+export default Navbar

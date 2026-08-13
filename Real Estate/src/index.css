@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+.frances{
+  font-family: "Fraunces", serif;
+}
+.bgimg{
+    background-image: url(https://thumbs.dreamstime.com/b/modern-luxury-house-architectural-design-exterior-view-two-story-home-d-villa-grass-model-estate-garden-stunning-luxurious-360212266.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 120vh;
+    position: relative;
+}
+.nav{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; 
+}
+.wrapper{
+    width: 100%;
+    height: 120vh;
+    position: absolute;
+    /* inset: 0; */
+    background-color: rgba(18, 35, 28, 0.6);
+}
