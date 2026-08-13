@@ -48,7 +48,40 @@ const Home = () => {
                 </div>
             </div>
             <div className='w-full h-screen bg-[#ede8d9]'>
-
+                <div className='sm:hidden md:flex md:flex-row w-[90%] h-25   border border-black'>
+                    <div className='w-[20%] h-25 border bg-white p-4'>
+                        <p className='frances text-[#a48d5d]'>Location</p>
+                        <p>Bahawalpur,Modal Town...</p>
+                    </div>
+                    <div className='w-[20%] h-25 border bg-white p-4'>
+                        <p className='frances text-[#a48d5d]'>Property Type</p>
+                        <select name="" id="">
+                            <option value="">Any Type</option>
+                            <option value="">Villa</option>
+                            <option value="">House</option>
+                            <option value="">Appartment</option>
+                            <option value="">Plot</option>
+                        </select>
+                    </div>
+                    <div className='w-[20%] h-25 border bg-white p-4'>
+                        <p className='frances text-[#a48d5d]'>Budget</p>
+                        <select name="" id="">
+                            <option value="">Any Budget</option>
+                            <option value="">Under 50 lakh</option>
+                            <option value="">50 lakh - 1crore</option>
+                            <option value="">1crore +</option>
+                        </select>
+                    </div>
+                    <div className='w-[20%] h-25 border bg-white p-4'>
+                        <p className='frances text-[#a48d5d]'>Bedrooms</p>
+                        <select name="" id="">
+                            <option value="">1+</option>
+                            <option value="">2+</option>
+                            <option value="">3+</option>
+                            <option value="">4+</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
     )
