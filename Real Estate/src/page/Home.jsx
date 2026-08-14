@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Products from '../components/Products'
+import Workers from '../components/Workers'
 const Home = () => {
 
     const [card, setCard] = useState(false)
@@ -120,7 +121,7 @@ const Home = () => {
 
 
 
-            <div className='w-full h-auto pl-5 pt-10 flex flex-col md:flex md:flex-row md:pl-0   md:w-[93%] md:h-screen md:ml-10 '>
+            <div id='about' className='w-full h-auto pl-5 pt-10 flex flex-col md:flex md:flex-row md:pl-0   md:w-[93%] md:h-screen md:ml-10 '>
                 <div className='aboutimg w-70 h-[70vh] md:w-[50%] md:h-[90vh] md:ml-8 relative'>
                     <div className='hidden md:block w-65 h-40 p-10 absolute  top-110 right-85 bg-[#C9A868]  '>
                         <p className='frances text-4xl font-bold '>412</p>
@@ -139,18 +140,35 @@ const Home = () => {
 
             </div>
 
-
-
-
-
-
-            <div className='w-full h-auto md:w-full md:h-70 md:mt-20  border-2 border-black bg-orange-900 '>
-                <h2>Thinking about buying, selling, or just curious what your home is worth?</h2>
-                <p>Thinking about buying, selling, or just curious what your home is worth?</p>
-                <button>Start the Conversation</button>
+            <div className='w-full h-auto flex flex-col gap-4  md:mt-25 md:justify-between md:flex md:flex-row md:gap-5'>
+                <div className='text-center md:text-left md:w-[50%] md:ml-10 md:mb-4'>
+                    <p className='text-[#C9A868] text-base'>The Team</p>
+                    <h1 className='frances text-4xl md:text-5xl'>People, not a call centre</h1>
+                </div>
+                <div className=' text-center ml-5 mr-5 md:text-left  md:w-[25%] md:text-base  md:mt-5 md:mr-15'>
+                    <p className='text-sm '>Every agent below handles their own clients start to finish.</p>
+                </div>
 
             </div>
-            
+            <div className='w-full h-screen'>
+                <div className='grid grid-cols-1 md:grid md:grid-cols-4 gap-0'>
+                    <Workers img="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=500&auto=format&fit=crop" name="Imran Sheikh" position="Founding Partner" />
+                    <Workers />
+                    <Workers />
+                    <Workers />
+                </div>
+            </div>
+
+
+
+
+            <div className='w-full h-auto md:w-full md:h-auto md:mt-20 flex flex-col gap-4 p-6 text-center md:p-20 md:pl-50 md:pr-50  border-2 border-black bg-orange-900 '>
+                <h2 className='frances text-white text-3xl md:text-5xl'>Thinking about buying, selling, or just curious what your home is worth?</h2>
+                <p className='text-gray-300 text-sm'>A conversation costs nothing and commits you to nothing.</p>
+                <button className='redsecbtn border border-white p-4 md:w-60 md:ml-80 text-center font-bold text-white bg-transparent'>Start the Conversation</button>
+
+            </div>
+
         </div>
     )
 }
