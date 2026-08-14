@@ -2,11 +2,13 @@ import React from 'react'
 import Homeicon from '../assets/icon-transparent.png'
 import { MdOutlineMenu } from "react-icons/md";
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
     const [open,setOpen] = useState(false)
   return (
+    <>
     <div className='nav sm:w-full h-auto flex flex-row justify-between md:pl-12 p-5 relative'>
       <div className='flex items-center gap-1'>
          <img src={Homeicon} alt="Logo" className='w-8 h-8 object-contain' />
@@ -20,7 +22,7 @@ const Navbar = () => {
           <li className='frances text-black text-md font-semibold'><a href="">Home</a></li>
           <li className='frances text-black text-md font-semibold'><a href="">Listings</a></li>
           <li className='frances text-black text-md font-semibold'><a href="">About</a></li>
-          <li className='frances text-black text-md font-semibold'><a href="">Contact</a></li>
+         <Link to={"/contact"}> <li className='frances text-black text-md font-semibold'><a href="">Contact</a></li></Link>
         </ul>
       )}
       <div className='hidden md:block'>
@@ -28,10 +30,14 @@ const Navbar = () => {
             <li>Home</li>
             <li>About</li>
             <li>Journal</li>
-            <li>Contact</li>
+           <Link to={"/contact"}> <li>Contact</li></Link>
         </ul>
       </div>
     </div>
+     
+
+    </>
+    
   )
 }
 
