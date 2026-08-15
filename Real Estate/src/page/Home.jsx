@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Products from '../components/Products'
 import Workers from '../components/Workers'
 import Reviews from '../components/Reviews'
+import Footer from '../components/Footer'
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 
@@ -208,19 +209,14 @@ const Home = () => {
 
             </div>
             <div className='w-full h-auto p-6 md:w-full md:h-screen md:p-10 md:pt-15'>
-                <div className='flex flex-col gap-2 md:flex md:flex-row md:gap-4'>
+                <div className='flex flex-col gap-4 md:flex md:flex-row md:gap-4'>
                     <Workers img="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=500&auto=format&fit=crop" name="Imran Sheikh" position="Founding Partner" />
                     <Workers img="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=500&auto=format&fit=crop" name="Mahnoor Iqbal" position="Senior Agent, Residential" />
                     <Workers img="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=500&auto=format&fit=crop" name="Usman Tariq" position="Land & Plots Specialist" />
                     <Workers img="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=500&auto=format&fit=crop" name="Zara Khan" position="Client Relations Lead" />
                 </div>
             </div>
-            <div className='w-full h-auto md:w-full md:h-auto md:mt-20 flex flex-col gap-4 p-6 text-center md:p-20 md:pl-50 md:pr-50  border-2 border-black bg-orange-900 '>
-                <h2 className='frances text-white text-3xl md:text-5xl'>Thinking about buying, selling, or just curious what your home is worth?</h2>
-                <p className='text-gray-300 text-sm'>A conversation costs nothing and commits you to nothing.</p>
-                <button className='redsecbtn border border-white p-4 md:w-60 md:ml-80 md:mt-5 text-center font-bold text-white bg-transparent'>Start the Conversation</button>
 
-            </div>
             <div className="w-full overflow-hidden leading-[0]">
                 <svg
                     className="w-full h-[80px] md:h-[120px] block"
@@ -250,11 +246,20 @@ const Home = () => {
                         />
                     ))}
                 </div>
-                <div className='flex flex-row gap-2 mt-10 justify-center'>
+                <div className='flex flex-row gap-2 pb-8 mt-10 justify-center'>
                     <button onClick={() => setPage(1)} className='p-2 rounded-4xl bg-transparent border text-white border-white'><FaChevronLeft /></button>
                     <button onClick={() => setPage(2)} className='p-2 rounded-4xl bg-transparent border text-white border-white'><FaChevronRight /></button>
                 </div>
             </div>
+
+            <div className='w-full h-auto md:w-full md:h-auto md:mt-20 flex flex-col gap-4 p-6 text-center md:p-20 md:pl-50 md:pr-50  border-2 border-black bg-orange-900 '>
+                <h2 className='frances text-white text-3xl md:text-5xl'>Thinking about buying, selling, or just curious what your home is worth?</h2>
+                <p className='text-gray-300 text-sm'>A conversation costs nothing and commits you to nothing.</p>
+                <button className='redsecbtn border border-white p-4 md:w-60 md:ml-80 md:mt-5 text-center font-bold text-white bg-transparent'>Start the Conversation</button>
+
+            </div>
+
+            <Footer />
 
         </div>
     )

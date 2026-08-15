@@ -10,10 +10,10 @@ const Navbar = () => {
   return (
     <>
     <div className='nav sm:w-full h-auto flex flex-row justify-between md:pl-12 p-5 relative'>
-      <div className='flex items-center gap-1'>
+     <Link to={"/"}> <div className='flex items-center gap-1'>
          <img src={Homeicon} alt="Logo" className='w-8 h-8 object-contain' />
          <p className='frances text-white text-md  md:text-2xl font-semibold'>Vintage <span className='text-[#c9a868]'>Estates</span> </p>
-      </div>
+      </div></Link>
       <div className='md:hidden'>
         <button onClick={()=>setOpen(!open)}><MdOutlineMenu size={30}/></button>
       </div>
