@@ -235,7 +235,7 @@ const Home = () => {
                     <p className='text-[#C9A868] text-base'>Client Notes</p>
                     <h2 className='frances text-3xl sm:text-4xl text-white md:text-5xl'>What it's like to work with us</h2>
                 </div>
-                <div className='flex flex-col items-center px-5 md:px-0 md:items-stretch md:ml-0 md:flex-row gap-4 md:gap-2'>
+                <div className='flex flex-col ml-5  justify-center md:ml-0 md:flex md:flex-row gap-2'>
                     {currentpage.map((review, index) => (
                         <Reviews
                             key={index}
