@@ -69,3 +69,13 @@
 html{
   scroll-behavior: smooth;
 }
+.workerimg {
+  filter: grayscale(100%);
+  transition: filter 0.4s ease;
+  transition: transform 0.3s ease;
+}
+
+.workerimg:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}

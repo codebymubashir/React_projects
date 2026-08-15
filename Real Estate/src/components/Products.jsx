@@ -3,7 +3,7 @@ import React from 'react'
 const Products = ({image,title,subtitle,btn1,btn2,btn3}) => {
   return (
     <>
-    <div className='w-70 md:w-95 h-auto border flex flex-col gap-4 bg-white group'>
+    <div className='w-70 md:w-95 h-auto flex flex-col gap-4 bg-white group'>
         <div className='overflow-hidden' >
            <img className='w-70 md:w-95 h-55 object-cover transition-transform duration-300 group-hover:scale-110 ' src={image} alt="" />
         </div>

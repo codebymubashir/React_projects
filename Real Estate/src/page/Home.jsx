@@ -2,9 +2,66 @@ import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Products from '../components/Products'
 import Workers from '../components/Workers'
+import Reviews from '../components/Reviews'
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+
 const Home = () => {
 
     const [card, setCard] = useState(false)
+
+    const reviewsData = [
+        {
+            img: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=200&auto=format&fit=crop",
+            des: "They turned down two properties on our behalf before showing us the one we bought. That restraint is rare.",
+            name: "Hassan Raza",
+            subname: "Bought, Model Town",
+        },
+        {
+            img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop",
+            des: "Sold our plot in eleven days at a price we didn't think was possible. Communication the whole way through.",
+            name: "Ayesha Farooq",
+            subname: "Sold, DHA Phase 2",
+        },
+        {
+            img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop",
+            des: "As first-time buyers we needed someone patient. They never rushed the process, even when.",
+            name: "Bilal Ahmed",
+            subname: "Bought, Satellite Town",
+        },
+        {
+            img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=200&auto=format&fit=crop",
+            des: "Transparent about issues most agents would've hidden — a cracked boundary wall, a slow water table.",
+            name: "Sana Malik",
+            subname: "Bought, Cantt Area",
+        },
+        {
+            img: "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?q=80&w=200&auto=format&fit=crop",
+            des: "We viewed twelve houses with three different agencies before them. They found what we wanted in two.",
+            name: "Faisal Nadeem",
+            subname: "Bought, Shah Rukn-e-Alam",
+        },
+        {
+            img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=200&auto=format&fit=crop",
+            des: "Negotiated three lakh off the asking price without us even asking. Didn't expect that kind of advocacy.",
+            name: "Mariam Sheikh",
+            subname: "Bought, Yasirabad",
+        },
+        {
+            img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
+            des: "Our plot had a boundary dispute pending for years. They sorted the paperwork before listing it — most agents wouldn't bother.",
+            name: "Kamran Sultan",
+            subname: "Sold, Baghdad-ul-Jadeed",
+        },
+    ];
+    const [page, setPage] = useState(1)
+
+
+    const itemsperpage = 3;
+    const lastindex = itemsperpage * page;
+    const firstindex = lastindex - itemsperpage
+    const currentpage = reviewsData.slice(firstindex, lastindex)
+
     return (
         <div>
             <Navbar />
@@ -150,23 +207,53 @@ const Home = () => {
                 </div>
 
             </div>
-            <div className='w-full h-screen'>
-                <div className='grid grid-cols-1 md:grid md:grid-cols-4 gap-0'>
+            <div className='w-full h-auto p-6 md:w-full md:h-screen md:p-10 md:pt-15'>
+                <div className='flex flex-col gap-2 md:flex md:flex-row md:gap-4'>
                     <Workers img="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=500&auto=format&fit=crop" name="Imran Sheikh" position="Founding Partner" />
-                    <Workers />
-                    <Workers />
-                    <Workers />
+                    <Workers img="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=500&auto=format&fit=crop" name="Mahnoor Iqbal" position="Senior Agent, Residential" />
+                    <Workers img="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=500&auto=format&fit=crop" name="Usman Tariq" position="Land & Plots Specialist" />
+                    <Workers img="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=500&auto=format&fit=crop" name="Zara Khan" position="Client Relations Lead" />
                 </div>
             </div>
-
-
-
-
             <div className='w-full h-auto md:w-full md:h-auto md:mt-20 flex flex-col gap-4 p-6 text-center md:p-20 md:pl-50 md:pr-50  border-2 border-black bg-orange-900 '>
                 <h2 className='frances text-white text-3xl md:text-5xl'>Thinking about buying, selling, or just curious what your home is worth?</h2>
                 <p className='text-gray-300 text-sm'>A conversation costs nothing and commits you to nothing.</p>
-                <button className='redsecbtn border border-white p-4 md:w-60 md:ml-80 text-center font-bold text-white bg-transparent'>Start the Conversation</button>
+                <button className='redsecbtn border border-white p-4 md:w-60 md:ml-80 md:mt-5 text-center font-bold text-white bg-transparent'>Start the Conversation</button>
 
+            </div>
+            <div className="w-full overflow-hidden leading-[0]">
+                <svg
+                    className="w-full h-[80px] md:h-[120px] block"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1440 320"
+                    preserveAspectRatio="none"
+                >
+                    <path
+                        fill="#12231C"
+                        d="M0,288L15,245.3C30,203,60,117,90,122.7C120,128,150,224,180,234.7C210,245,240,171,270,133.3C300,96,330,96,360,85.3C390,75,420,53,450,53.3C480,53,510,75,540,106.7C570,139,600,181,630,181.3C660,181,690,139,720,122.7C750,107,780,117,810,138.7C840,160,870,192,900,170.7C930,149,960,75,990,80C1020,85,1050,171,1080,197.3C1110,224,1140,192,1170,186.7C1200,181,1230,203,1260,186.7C1290,171,1320,117,1350,112C1380,107,1410,149,1425,170.7L1440,192L1440,320L1425,320C1410,320,1380,320,1350,320C1320,320,1290,320,1260,320C1230,320,1200,320,1170,320C1140,320,1110,320,1080,320C1050,320,1020,320,990,320C960,320,930,320,900,320C870,320,840,320,810,320C780,320,750,320,720,320C690,320,660,320,630,320C600,320,570,320,540,320C510,320,480,320,450,320C420,320,390,320,360,320C330,320,300,320,270,320C240,320,210,320,180,320C150,320,120,320,90,320C60,320,30,320,15,320L0,320Z"
+                    />
+                </svg>
+            </div>
+            <div id='reviews' className='w-full h-auto md:h-[105vh] pt-8 md:pt-15 bg-[#12231C]  '>
+                <div className='text-center md:text-left md:w-[50%] md:ml-10 md:mb-4'>
+                    <p className='text-[#C9A868] text-base'>Client Notes</p>
+                    <h2 className='frances text-4xl text-white md:text-5xl'>What it's like to work with us</h2>
+                </div>
+                <div className='flex flex-col ml-5  justify-center md:ml-0 md:flex md:flex-row gap-2'>
+                    {currentpage.map((review, index) => (
+                        <Reviews
+                            key={index}
+                            des={review.des}
+                            img={review.img}
+                            name={review.name}
+                            subname={review.subname}
+                        />
+                    ))}
+                </div>
+                <div className='flex flex-row gap-2 mt-10 justify-center'>
+                    <button onClick={() => setPage(1)} className='p-2 rounded-4xl bg-transparent border text-white border-white'><FaChevronLeft /></button>
+                    <button onClick={() => setPage(2)} className='p-2 rounded-4xl bg-transparent border text-white border-white'><FaChevronRight /></button>
+                </div>
             </div>
 
         </div>

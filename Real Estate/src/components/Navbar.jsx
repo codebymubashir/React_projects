@@ -19,18 +19,21 @@ const Navbar = () => {
       </div>
        {open && (
         <ul className='absolute top-full left-0 w-full bg-[#a48d5d] flex flex-col items-center gap-6 py-6 md:hidden shadow-lg'>
-          <li className='frances text-black text-md font-semibold'><a href="">Home</a></li>
+         <Link to={"/"}> <li className='frances text-black text-md font-semibold'><a href="">Home</a></li></Link>
           <li className='frances text-black text-md font-semibold'><a href="">Listings</a></li>
           <li className='frances text-black text-md font-semibold'><a href="#about">About</a></li>
+          <li className='frances text-black text-md font-semibold'><a href="#reviews">Reviews</a></li>
          <Link to={"/contact"}> <li className='frances text-black text-md font-semibold'><a href="">Contact</a></li></Link>
         </ul>
       )}
       <div className='hidden md:block'>
         <ul className='flex flex-row text-white uppercase gap-4 w-120 h-auto p-5 justify-around '>
-            <li>Home</li>
+            <Link to={"/"}><li>Home</li></Link>
             <a href="#about"><li>About</li></a>
             <li>Journal</li>
            <Link to={"/contact"}> <li>Contact</li></Link>
+            <a href="#reviews"><li>Reviews</li></a>
+
         </ul>
       </div>
     </div>
