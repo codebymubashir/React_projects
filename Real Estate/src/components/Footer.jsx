@@ -5,45 +5,45 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <>
-      <div className='w-full h-auto pt-20 pb-15 pl-10 mt-20 flex flex-col gap-5 md:flex md:flex-row md:justify-around md:pl-0 bg-[#12231C]'>
-        <div className=' w-60 h-auto flex flex-col gap-6'>
+      <div className='w-full h-auto pt-16 pb-10 px-6 mt-10 md:mt-20 md:pt-20 md:pb-15 flex flex-col gap-10 md:flex-row md:flex-wrap md:justify-around md:px-10 bg-[#12231C]'>
+        <div className='w-full md:w-60 h-auto flex flex-col gap-6'>
           <Link to={"/"}> <div className='flex items-center gap-1'>
             <img src={Homeicon} alt="Logo" className='w-8 h-8 object-contain' />
-            <p className='frances text-white text-md  md:text-2xl font-semibold'>Vintage <span className='text-[#c9a868]'>Estates</span> </p>
+            <p className='frances text-white text-md md:text-2xl font-semibold'>Vintage <span className='text-[#c9a868]'>Estates</span> </p>
           </div></Link>
-          <div className=' w-55 md:w-75 '>
-            <p className='text-[#AEB0A3] text-base '>A boutique real estate practice based in Bahawalpur, representing a deliberately small portfolio of homes and plots.</p>
+          <div className='w-full md:w-75'>
+            <p className='text-[#AEB0A3] text-base'>A boutique real estate practice based in Bahawalpur, representing a deliberately small portfolio of homes and plots.</p>
           </div>
-
         </div>
-         <ul className='text-white flex flex-col gap-3'>
-                    <a href=""><li className='text-[#C9A868] footlist font-bold'>Navigate</li></a>
-                    <a href=""><li className='footlist'>Home</li></a>
-                    <a href="#about"><li className='footlist'>About</li></a>
-                    <a href="/contact"><li className='footlist'>Contact</li></a>
-                    <a href=""><li className='footlist'>Journal</li></a>
-                    <a href="#reviews"><li className='footlist'>Customer reviews</li></a>
-          </ul>
-          <ul className=' text-white flex flex-col gap-3'>
-                    <a href=""><li className='text-[#C9A868] footlist font-bold'>Property Types</li></a>
-                    <a href=""><li className='footlist'>House</li></a>
-                    <a href=""><li className='footlist'>Appartments</li></a>
-                    <a href=""><li className='footlist'>Villas</li></a>
-                    <a href=""><li className='footlist'>Plot</li></a>
-          </ul>
-          <div className='w-60 flex flex-col gap-4'>
-            <p className='text-[#C9A868] text-xl font-bold'>Stay Informed</p>
-            <p className='text-[#AEB0A3] text-base'>New listings and market notes, once every couple of weeks.</p>
-            <input className='border-b-2 border-b-[#C9A868] text-white'  type="email" name="" id="" placeholder='Your email' />
-          </div>
-          
 
+        <ul className='text-white flex flex-col gap-3'>
+          <a href=""><li className='text-[#C9A868] footlist font-bold'>Navigate</li></a>
+          <Link to={"/"}><li className='footlist'>Home</li></Link>
+          <a href="#about"><li className='footlist'>About</li></a>
+          <Link to={"/contact"}><li className='footlist'>Contact</li></Link>
+          <a href=""><li className='footlist'>Journal</li></a>
+          <a href="#reviews"><li className='footlist'>Customer reviews</li></a>
+        </ul>
+
+        <ul className='text-white flex flex-col gap-3'>
+          <a href=""><li className='text-[#C9A868] footlist font-bold'>Property Types</li></a>
+          <a href=""><li className='footlist'>House</li></a>
+          <a href=""><li className='footlist'>Appartments</li></a>
+          <a href=""><li className='footlist'>Villas</li></a>
+          <a href=""><li className='footlist'>Plot</li></a>
+        </ul>
+
+        <div className='w-full md:w-60 flex flex-col gap-4'>
+          <p className='text-[#C9A868] text-xl font-bold'>Stay Informed</p>
+          <p className='text-[#AEB0A3] text-base'>New listings and market notes, once every couple of weeks.</p>
+          <input className='w-full border-b-2 border-b-[#C9A868] text-white bg-transparent pb-2 focus:outline-none' type="email" name="" id="" placeholder='Your email' />
+        </div>
       </div>
+
       <div>
-        <div className=' w-full h-auto text-center bg-[#12231C] md:flex md:justify-center '>
-            <h1 className='fluid-text text-[5rem] md:text-[8rem]'>Real Estates</h1>
-          </div>
-          
+        <div className='w-full h-auto text-center bg-[#12231C] overflow-hidden md:flex md:justify-center'>
+          <h1 className='fluid-text text-[3rem] sm:text-[5rem] md:text-[8rem] break-words px-2'>Real Estates</h1>
+        </div>
       </div>
     </>
   )
