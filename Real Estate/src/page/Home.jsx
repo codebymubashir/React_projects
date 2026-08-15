@@ -70,7 +70,7 @@ const Home = () => {
                 <div className='wrapper'>
                     <div className='w-full relative z-10'>
                         <div className='page1 flex flex-col md:flex-row border pt-24'>
-                            <div className='w-full md:w-[50%] p-5 md:pl-10 md:pt-20 flex flex-col gap-4 min-h-[80vh] md:h-screen'>
+                            <div className='w-full md:w-[50%] p-5 md:pl-10 md:pt-20 flex flex-col gap-4 md:h-screen'>
                                 <p className='monospace font-mono text-xs tracking-widest uppercase text-[#A6811A]'>EST.1996 — BAHAWALPUR % BEYOND</p>
                                 <h1 className='frances text-3xl sm:text-4xl md:text-6xl font-bold text-white'>Homes Choosen for how they'll be <span className='text-[#a48d5d]'>lived in,</span> not just listed.</h1>
                                 <p className='text-sm sm:text-base text-[#c2bfb3]'>We represent a small number of exceptional properties at a time — each one walked, measured, and vetted by our own team before it ever reaches a buyer.</p>
@@ -154,10 +154,10 @@ const Home = () => {
                         <h1 className='frances text-4xl md:text-5xl'>Currently Representing</h1>
                     </div>
                     <div className='text-center md:text-left md:w-[25%] md:text-base md:mt-3 md:mr-15'>
-                        <p className='text-sm'>A short rotation of homes we're proud to have walked ourselves — updated weekly, never bulk-imported.</p>
+                        <p className='text-sm text-center '>A short rotation of homes we're proud to have walked ourselves — updated weekly, never bulk-imported.</p>
                     </div>
                 </div>
-                <div className="flex flex-col px-5 md:grid md:grid-cols-3 gap-4 md:gap-2 md:pl-10 pt-15 md:px-8">
+                <div className="flex flex-col items-center px-5 md:grid md:grid-cols-3 gap-4 md:gap-2 md:pl-10 pt-15 md:px-8">
                     <Products image="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=900&auto=format&fit=crop" title="The Cantt Residence" subtitle="Model Town Bahawalpur" btn1="4 Beds" btn2="3 Baths" btn3="10 Marla" />
                     <Products image="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=900&auto=format&fit=crop" title="Vane Court Apartments" subtitle="Satellite Town, Bahawalpur" btn1="2 Beds" btn2="2 Baths" btn3="10 Marla" />
                     <Products image="https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=900&auto=format&fit=crop" title="Aldergate Corner Plot" subtitle="DHA Phase 2, Bahawalpur" btn1="4 Beds" btn2="2 Baths" btn3="10 Marla" />
