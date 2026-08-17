@@ -106,3 +106,19 @@ html{
 .fluid-text:hover {
   background-position: 0% 0;
 }
+.contactimg {
+  background-image: url(https://img.magnific.com/premium-photo/modern-house-featuring-large-panoramic-glass-walls-with-picturesque-desert-backdrop_641010-63729.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .contactimg {
+    min-height: 100vh;
+  }
+  .wrapper {
+    height: 100vh;
+    position: absolute;
+  }
+}

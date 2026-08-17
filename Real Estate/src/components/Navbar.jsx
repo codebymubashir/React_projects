@@ -4,7 +4,7 @@ import { MdOutlineMenu } from "react-icons/md";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({background}) => {
 
   const [open, setOpen] = useState(false)
   return (
@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className='nav sm:w-full h-auto flex flex-row justify-between md:pl-12 p-5 relative'>
         <Link to={"/"}> <div className='flex items-center gap-1'>
           <img src={Homeicon} alt="Logo" className='w-8 h-8 object-contain' />
-          <p className='frances text-white text-md  md:text-2xl font-semibold'>Vintage <span className='text-[#c9a868]'>Estates</span> </p>
+          <p className='frances text-white text-md  md:text-2xl font-semibold md:mt-4'>Vintage <span className='text-[#c9a868]'>Estates</span> </p>
         </div></Link>
         <div className='md:hidden'>
           <button onClick={() => setOpen(!open)}><MdOutlineMenu size={30} /></button>
