@@ -1,8 +1,40 @@
-import React from 'react'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { collection } from 'firebase/firestore'
+import React, { useState } from 'react'
 import { FaChevronRight, FaApple, FaGoogle } from "react-icons/fa"
 import { Link } from 'react-router-dom'
+import { auth } from '../firebase'
+import { db } from '../firebase'
 
 const Login = ({ onClose }) => {
+
+    const [email, setemail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleregistor = async (e) => {
+        e.preventDefault();
+
+        try {
+            const userCrediential = await createUserWithEmailAndPassword(
+                auth,        // <-- was missing
+                email,
+                password,
+            );
+            const user = userCrediential.user;
+
+            await addDoc(collection(db, "users"), {
+                email: user.email,
+                createdAt: new Date()
+            })
+            console.log("user registered successfully:", user.email);
+            setemail("");
+            setPassword("");
+
+        } catch (error) {
+            console.log("Error registering:", error.message)  // log full message, not just [object Object]
+        }
+    }
+
     return (
         <div className='bg-[#07271F] w-[420px] h-auto p-5 rounded-2xl text-white relative'>
             <div className='flex justify-between items-center mb-4'>
@@ -10,14 +42,29 @@ const Login = ({ onClose }) => {
                 <button className='text-gray-400 hover:text-white text-2xl'>✕</button>
             </div>
             <h2 className='frances text-xl font-medium mb-4'>Welcome! How would you like to connect?</h2>
-            <button className='w-full bg-[#0d2e21] hover:bg-[#123a2b] rounded-full py-5 px-6 flex justify-between items-center font-semibold mb-4 transition-all'>
-                Email
-                <FaChevronRight className='text-[#2FE38A]' />
-            </button>
-            <button className='w-full bg-[#0d2e21] hover:bg-[#123a2b] rounded-full py-5 px-6 flex justify-between items-center font-semibold mb-8 transition-all'>
-                Phone Number
-                <FaChevronRight className='text-[#2FE38A]' />
-            </button>
+            <form onSubmit={handleregistor}>
+                <div className='mb-4'>
+                    <input
+                        type='email'
+                        onChange={(e)=>setemail(e.target.value)}
+                        placeholder='Email'
+                        className='w-full bg-[#0d2e21] rounded-full py-5 px-6 font-semibold text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#2FE38A] transition-all'
+                    />
+                </div>
+
+                <div className='mb-8'>
+                    <input
+                        type='password'
+                        onChange={(e)=>setPassword(e.target.value)}
+                        placeholder='Password'
+                        className='w-full bg-[#0d2e21] rounded-full py-5 px-6 font-semibold text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#2FE38A] transition-all'
+                    />
+                </div>
+
+                <button type='submit' className='w-full bg-[#2FE38A] hover:bg-[#28c97a] rounded-full py-5 px-6 flex justify-center items-center font-semibold mb-4 text-[#0d2e21] transition-all'>
+                    Sign In
+                </button>
+            </form>
             <div className='flex justify-center gap-4 mb-10'>
                 <button className='bg-white w-14 h-14 rounded-full flex justify-center items-center hover:scale-105 transition-all'>
                     <FaApple size={24} className='text-black' />
