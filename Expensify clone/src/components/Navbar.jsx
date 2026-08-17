@@ -1,11 +1,13 @@
 import React from 'react'
+import { FaEye } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({dark, useToggle}) => {
   return (
-    <div className='w-full h-8 border flex flex-row gap-4 justify-center item-center p-1 bg-[#002E22]'>
-        <p className='text-white text-sm'>Ask Concierge AI to handle expenses, analyze spend, and more</p>
-        <a className='text-white text-sm' href="">Learn More →</a>
-      
+    <div className='homeDiv z-100 w-full h-15 text-white flex flex-row justify-center items-center bg-[#002E22] inter gap-3 font-semibold text-sm'>
+      <button onClick={useToggle}>{dark ? "Light mode" : "Dark mode"}</button>
+      <FaEye />
+      <p>Ask Concierge AI to handle expenses, analyze spend, and more.</p>
+      <a href="">Learn more →</a>
     </div>
   )
 }

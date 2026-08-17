@@ -12,28 +12,31 @@ import Accountprofile from "./pages/Account/pages/Accountprofile";
 import Accountwallet from "./pages/Account/pages/Accountwallet";
 import Accountrules from "./pages/Account/pages/Accountrules";
 import Agents from "./pages/Account/pages/Agents";
+import useToggle from "./components/useToggle";
 function App() {
+
+  const [dark, toggleDark] = useToggle(false);
   return (
     <>
-      <Navbar />
+      <Navbar dark={dark} useToggle={toggleDark} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/homes" element={<Homes />} />
-        <Route path="/inbox" element={<Inbox />} />
-        <Route path="/spend" element={<Spend />} >
-          <Route index element={<Spendexpen/>}/>  
-          <Route path="expense" element={<Spendexpen/>}/>
-          <Route path="report" element={<Spendreport/>}/>
+        <Route path="/" element={<Home dark={dark} />} />
+        <Route path="/homes" element={<Homes dark={dark} />} />
+        <Route path="/inbox" element={<Inbox dark={dark} />} />
+        <Route path="/spend" element={<Spend dark={dark} />}>
+          <Route index element={<Spendexpen dark={dark} />} />
+          <Route path="expense" element={<Spendexpen dark={dark} />} />
+          <Route path="report" element={<Spendreport dark={dark} />} />
         </Route>
-        <Route path="/worksp" element={<Worksp />} />
-        <Route path="/accounts" element={<Accounts />} >
-          <Route path="profile" element={<Accountprofile/>} />
-          <Route path="wallet" element={<Accountwallet/>} />
-          <Route path="rules" element={<Accountrules/>} />
-          <Route path="agents" element={<Agents/>} />
+        <Route path="/worksp" element={<Worksp dark={dark} />} />
+        <Route path="/accounts" element={<Accounts dark={dark} />}>
+          <Route index element={<Accountprofile dark={dark} />} />
+          <Route path="profile" element={<Accountprofile dark={dark} />} />
+          <Route path="wallet" element={<Accountwallet dark={dark} />} />
+          <Route path="rules" element={<Accountrules dark={dark} />} />
+          <Route path="agents" element={<Agents dark={dark} />} />
         </Route>
       </Routes>
-      
     </>
   );
 }

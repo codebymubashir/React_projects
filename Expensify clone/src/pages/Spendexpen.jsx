@@ -1,30 +1,31 @@
 import React from "react";
-import Dashboard from "../components/Dashboard";
-import Spend from "./Spend";
+import { useOutletContext } from "react-router-dom";
 import myImage from "../assets/spendexpens.png";
 
 const Spendexpen = () => {
+  const { dark } = useOutletContext();
+
   return (
-    <div className="w-full min-h-screen bg-[#061b09]">
-      <h1 className="frances text-white text-xl p-4">Expense</h1>
+    <div className={`w-full min-h-screen ${dark ? "bg-[#061b09]" : "bg-white"}`}>
+      <h1 className={`frances text-xl p-4 ${dark ? "text-white" : "text-[#0B2E1F]"}`}>Expense</h1>
 
       <div className="w-full flex justify-between items-center px-6 py-4">
         <input
-          className="text-white w-64 h-10 border rounded-lg p-2 bg-transparent"
+          className={`w-64 h-10 border rounded-lg p-2 bg-transparent ${dark ? "text-white" : "text-black"}`}
           type="text"
           placeholder="search for something.."
         />
-        <div className="flex flex-row gap-3 text-white">
-          <button className="icons font-bold rounded-full border px-5 h-10">
+        <div className={`flex flex-row gap-3 ${dark ? "text-white" : "text-[#0B2E1F]"}`}>
+          <button className={`icons font-bold rounded-full border px-5 h-10 ${dark ? "border-white" : "border-gray-300"}`}>
             Display
           </button>
-          <button className="icons font-bold rounded-full border px-5 h-10">
+          <button className={`icons font-bold rounded-full border px-5 h-10 ${dark ? "border-white" : "border-gray-300"}`}>
             Save
           </button>
-          <button className="icons font-bold rounded-full border px-5 h-10">
+          <button className={`icons font-bold rounded-full border px-5 h-10 ${dark ? "border-white" : "border-gray-300"}`}>
             Filter
           </button>
-          <button className="icons font-bold rounded-full border px-5 h-10">
+          <button className={`icons font-bold rounded-full border px-5 h-10 ${dark ? "border-white" : "border-gray-300"}`}>
             +Create
           </button>
         </div>
@@ -36,10 +37,10 @@ const Spendexpen = () => {
           src={myImage}
           alt="No expenses illustration"
         />
-        <h2 className="text-white text-3xl font-bold frances">
+        <h2 className={`text-3xl font-bold frances ${dark ? "text-white" : "text-[#0B2E1F]"}`}>
           No expenses yet
         </h2>
-        <p className="text-[#a7b4a8] text-base">
+        <p className={dark ? "text-[#a7b4a8]" : "text-gray-500"}>
           Create an expense or take a test drive of Expensify to learn more.
         </p>
         <div className="flex flex-row gap-3 justify-center mt-2">

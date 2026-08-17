@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useOutletContext } from 'react-router-dom'
 import { CgProfile } from "react-icons/cg";
 import { LuCircleUserRound } from "react-icons/lu";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
@@ -9,6 +10,8 @@ import { FaCheck } from "react-icons/fa"
 
 
 const Accountprofile = () => {
+
+  const { dark } = useOutletContext();
 
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
@@ -35,6 +38,15 @@ const Accountprofile = () => {
   const [rendclearance, setRendClearance] = useState("")
   const [time, setTime] = useState("")
 
+  // reusable theme classes -- taake har jagah ternary na likhna pade
+  const panelBg = dark ? 'bg-[#061b09]' : 'bg-white';
+  const pageText = dark ? 'text-white' : 'text-[#0B2E1F]';
+  const mutedText = dark ? 'text-[#52675c]' : 'text-gray-500';
+  const softText = dark ? 'text-white/80' : 'text-gray-600';
+  const inputBorder = dark ? 'border-[#1f3d31] focus:border-[#03d47c]' : 'border-gray-300 focus:border-[#03d47c]';
+  const inputPlaceholder = dark ? 'placeholder-[#52675c]' : 'placeholder-gray-400';
+  const cardBg = dark ? 'bg-[#072419]' : 'bg-white border border-gray-200';
+  const hoverRow = dark ? 'hover:bg-[#0A2E25]' : 'hover:bg-gray-100';
 
   const options = ["Never", "30 minutes", "1 hour", "Today", "A week", "Custom"];
 
@@ -131,26 +143,24 @@ const Accountprofile = () => {
   return (
     <>
 
-
-
       {/* contact methods state */}
       {isOpen && (
         <div onClick={() => setIsOpen(false)} className="fixed inset-0 bg-black/40 z-40" />
       )}
-      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-[#061b09] shadow-2xl z-50 p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] ${panelBg} shadow-2xl z-50 p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
         <div className='flex flex-row gap-2'>
-          <p onClick={() => setIsOpen(false)} className='text-[#52675c] pt-4'><FaChevronLeft /></p>
-          <h1 className='font-bold text-white text-base mt-3'>Contact methods</h1>
+          <p onClick={() => setIsOpen(false)} className={`${mutedText} pt-4`}><FaChevronLeft /></p>
+          <h1 className={`font-bold ${pageText} text-base mt-3`}>Contact methods</h1>
         </div>
         <div className=' w-85 flex flex-col gap-5 mt-8' >
-          <p className='text-white text-base'>Add more ways to log in and send receipts to Expensify.</p>
-          <p className='text-white text-base'>Add an email address to forward receipts to <span className='text-[#56a9f4]'>receipts@expensify.com</span> or add a phone number to text receipts to 47777 (US numbers only).</p>
+          <p className={`${pageText} text-base`}>Add more ways to log in and send receipts to Expensify.</p>
+          <p className={`${pageText} text-base`}>Add an email address to forward receipts to <span className='text-[#56a9f4]'>receipts@expensify.com</span> or add a phone number to text receipts to 47777 (US numbers only).</p>
           <div onClick={() => setIsOpen2(true)} className='pdiv rounded-lg p-2 flex flex-row'>
-            <div className=' w-full text-white'>
-              <h2 className='text-white text-base'>Unimubashir2@gamil.com</h2>
-              <p className='text-[#52675c] text-sm'>we'll use this method to contact you.</p>
+            <div className={` w-full ${pageText}`}>
+              <h2 className={`${pageText} text-base`}>Unimubashir2@gamil.com</h2>
+              <p className={`${mutedText} text-sm`}>we'll use this method to contact you.</p>
             </div>
-            <p className='text-[#52675c] pt-4'><FaChevronRight /></p>
+            <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
           </div>
         </div>
       </div>
@@ -162,13 +172,13 @@ const Accountprofile = () => {
       {isOpen2 && (
         <div onClick={() => setIsOpen2(false)} className="fixed inset-0 bg-black/40 z-[60]" />
       )}
-      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-[#061b09] shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen2 ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] ${panelBg} shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen2 ? "translate-x-0" : "translate-x-full"}`}>
         <div className='flex flex-row gap-2'>
-          <p onClick={() => setIsOpen2(false)} className='text-[#52675c] pt-4'><FaChevronLeft /></p>
-          <h1 className='font-bold text-white text-base mt-3'>Email details</h1>
+          <p onClick={() => setIsOpen2(false)} className={`${mutedText} pt-4`}><FaChevronLeft /></p>
+          <h1 className={`font-bold ${pageText} text-base mt-3`}>Email details</h1>
         </div>
         <div className='mt-6'>
-          <p className='text-white text-base'>This is your current default contact method. Before you can delete it, you'll need to choose another contact method and click "Set as default".</p>
+          <p className={`${pageText} text-base`}>This is your current default contact method. Before you can delete it, you'll need to choose another contact method and click "Set as default".</p>
         </div>
       </div>
 
@@ -179,32 +189,32 @@ const Accountprofile = () => {
       {isOpen3 && (
         <div onClick={() => setIsOpen3(false)} className="fixed inset-0 bg-black/40 z-[60]" />
       )}
-      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-[#061b09] shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen3 ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] ${panelBg} shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen3 ? "translate-x-0" : "translate-x-full"}`}>
         <div className='flex flex-row gap-2'>
-          <p onClick={() => setIsOpen3(false)} className='text-[#52675c] pt-4'><FaChevronLeft /></p>
-          <h1 className='font-bold text-white text-base mt-3'>Display Name</h1>
+          <p onClick={() => setIsOpen3(false)} className={`${mutedText} pt-4`}><FaChevronLeft /></p>
+          <h1 className={`font-bold ${pageText} text-base mt-3`}>Display Name</h1>
         </div>
         <div className='mt-6'>
-          <p className='text-base text-white'>Your display name is shown on your profile.</p>
+          <p className={`text-base ${pageText}`}>Your display name is shown on your profile.</p>
         </div>
         <div className='flex flex-col gap-4'>
-          <div className='pdiv rounded-lg border border-[#1f3d31] p-3'>
-            <label className='text-[#52675c] text-sm block'>First name</label>
+          <div className={`pdiv rounded-lg border ${inputBorder} p-3`}>
+            <label className={`${mutedText} text-sm block`}>First name</label>
             <input
               type='text'
               value={firstNameInput}
               onChange={(e) => setFirstNameInput(e.target.value)}
-              className='bg-transparent text-white text-lg font-semibold w-full outline-none'
+              className={`bg-transparent ${pageText} text-lg font-semibold w-full outline-none`}
             />
           </div>
 
-          <div className='pdiv rounded-lg border border-[#1f3d31] p-3'>
-            <label className='text-[#52675c] text-sm block'>Last name</label>
+          <div className={`pdiv rounded-lg border ${inputBorder} p-3`}>
+            <label className={`${mutedText} text-sm block`}>Last name</label>
             <input
               type='text'
               value={lastNameInput}
               onChange={(e) => setLastNameInput(e.target.value)}
-              className='bg-transparent text-white text-lg font-semibold w-full outline-none'
+              className={`bg-transparent ${pageText} text-lg font-semibold w-full outline-none`}
             />
           </div>
         </div>
@@ -227,13 +237,13 @@ const Accountprofile = () => {
       {isOpen4 && (
         <div onClick={() => setIsOpen4(false)} className="fixed inset-0 bg-black/40 z-[60]" />
       )}
-      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-[#061b09] shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen4 ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] ${panelBg} shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen4 ? "translate-x-0" : "translate-x-full"}`}>
         <div className='flex flex-row gap-2'>
-          <p onClick={() => setIsOpen4(false)} className='text-[#52675c] pt-4'><FaChevronLeft /></p>
-          <h1 className='font-bold text-white text-base mt-3'>Status</h1>
+          <p onClick={() => setIsOpen4(false)} className={`${mutedText} pt-4`}><FaChevronLeft /></p>
+          <h1 className={`font-bold ${pageText} text-base mt-3`}>Status</h1>
         </div>
         <div className='mt-6'>
-          <p className='text-white text-base'>Set your status with an emoji and optional message.</p>
+          <p className={`${pageText} text-base`}>Set your status with an emoji and optional message.</p>
         </div>
 
         <div className='relative w-[30%] h-12 rounded-4xl bg-[#1A3D32] hover:bg-green-400 flex gap-2 justify-center items-center text-center font-semibold m-3'>
@@ -264,29 +274,29 @@ const Accountprofile = () => {
             value={statusText}
             onChange={(e) => setStatusText(e.target.value)}
             placeholder='Message'
-            className='w-full bg-transparent border border-[#1f3d31] focus:border-[#03d47c] rounded-2xl p-4 text-white placeholder-[#52675c] outline-none transition-colors duration-200'
+            className={`w-full bg-transparent border ${inputBorder} rounded-2xl p-4 ${pageText} ${inputPlaceholder} outline-none transition-colors duration-200`}
           />
         </div>
-        <div className='bg-[#061b09] pt-4 w-full max-w-md flex flex-col gap-2'>
+        <div className={`${panelBg} pt-4 w-full max-w-md flex flex-col gap-2`}>
           <div onClick={() => setIsOpen9(true)} className='pdiv rounded-lg p-2 flex flex-row justify-between items-center cursor-pointer'>
             <div>
-              <h2 className='text-[#52675c] text-sm'>Clear after</h2>
-              <p className='text-white text-base font-semibold'>{rendclearance || "Today"}</p>
+              <h2 className={`${mutedText} text-sm`}>Clear after</h2>
+              <p className={`${pageText} text-base font-semibold`}>{rendclearance || "Today"}</p>
             </div>
-            <FaChevronRight className='text-[#52675c]' />
+            <FaChevronRight className={mutedText} />
           </div>
 
-          <hr className='border-[#1f3d31]' />
+          <hr className={dark ? 'border-[#1f3d31]' : 'border-gray-200'} />
           <div className='flex flex-col gap-2'>
-            <h1 className='font-bold text-white text-lg'>Vacation delegate</h1>
-            <p className='text-white/80 text-base'>
+            <h1 className={`font-bold ${pageText} text-lg`}>Vacation delegate</h1>
+            <p className={`${softText} text-base`}>
               Set a vacation delegate to approve reports on your behalf while you're out of office.
             </p>
           </div>
 
           <div className='pdiv rounded-lg p-2 flex flex-row justify-between items-center cursor-pointer'>
-            <p className='text-[#52675c] text-base'>Vacation delegate</p>
-            <FaChevronRight className='text-[#52675c]' />
+            <p className={`${mutedText} text-base`}>Vacation delegate</p>
+            <FaChevronRight className={mutedText} />
           </div>
         </div>
         <div onClick={() => {
@@ -303,30 +313,30 @@ const Accountprofile = () => {
       {isOpen5 && (
         <div onClick={() => setIsOpen5(false)} className="fixed inset-0 bg-black/40 z-[60]" />
       )}
-      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-[#061b09] shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen5 ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] ${panelBg} shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen5 ? "translate-x-0" : "translate-x-full"}`}>
         <div className='flex flex-row gap-2'>
-          <p onClick={() => setIsOpen5(false)} className='text-[#52675c] pt-4'><FaChevronLeft /></p>
-          <h1 className='font-bold text-white text-base mt-3'>Time Zone</h1>
+          <p onClick={() => setIsOpen5(false)} className={`${mutedText} pt-4`}><FaChevronLeft /></p>
+          <h1 className={`font-bold ${pageText} text-base mt-3`}>Time Zone</h1>
         </div>
         <div>
-          <p className='text-white text-base mt-4 '>Your timezone is shown on your profile.</p>
+          <p className={`${pageText} text-base mt-4`}>Your timezone is shown on your profile.</p>
         </div>
         <div className='flex flex-row gap-12'>
-          <p className='text-white text-sm mt-4 '>Automatically determine your location</p>
+          <p className={`${pageText} text-sm mt-4`}>Automatically determine your location</p>
           <div className=' mt-2.5'>
-            <label class="switch">
-              <input type="checkbox" class="checkbox" />
-              <div class="slider"></div>
+            <label className="switch">
+              <input type="checkbox" className="checkbox" />
+              <div className="slider"></div>
             </label>
           </div>
         </div>
         <div className='mt-6'>
           <div onClick={() => setIsOpen6(true)} className='pdiv rounded-lg p-2 flex flex-row'>
-            <div className=' w-full text-white'>
-              <h2 className='text-white/80 text-xs'>Timezone</h2>
-              <p className='text-white text-lg'>America</p>
+            <div className={` w-full ${pageText}`}>
+              <h2 className={`${softText} text-xs`}>Timezone</h2>
+              <p className={`${pageText} text-lg`}>America</p>
             </div>
-            <p className='text-[#52675c] pt-4'><FaChevronRight /></p>
+            <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
           </div>
         </div>
       </div>
@@ -336,20 +346,20 @@ const Accountprofile = () => {
       {isOpen6 && (
         <div onClick={() => setIsOpen6(false)} className="fixed inset-0 bg-black/40 z-[60]" />
       )}
-      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-[#061b09] shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen6 ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] ${panelBg} shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen6 ? "translate-x-0" : "translate-x-full"}`}>
         <div className='flex flex-row gap-2'>
-          <p onClick={() => setIsOpen6(false)} className='text-[#52675c] pt-4'><FaChevronLeft /></p>
-          <h1 className='font-bold text-white text-base mt-3'>Time Zone</h1>
+          <p onClick={() => setIsOpen6(false)} className={`${mutedText} pt-4`}><FaChevronLeft /></p>
+          <h1 className={`font-bold ${pageText} text-base mt-3`}>Time Zone</h1>
         </div>
         <div>
-          <div className='bg-[#07271F] w-full mt-5 max-w-md mx-auto'>
+          <div className={`${dark ? 'bg-[#07271F]' : 'bg-gray-50'} w-full mt-5 max-w-md mx-auto`}>
 
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search timezone..."
-              className='w-full p-2 bg-[#0d2e21] text-white  border border-[#2FE38A]'
+              className={`w-full p-2 ${dark ? 'bg-[#0d2e21] text-white' : 'bg-white text-black'} border border-[#2FE38A]`}
             />
 
             <div className='max-h-[350px] overflow-y-auto'>
@@ -357,9 +367,9 @@ const Accountprofile = () => {
                 <div
                   key={tz}
                   onClick={() => setSelected(tz)}
-                  className='flex justify-between items-center px-6 py-5 border-b border-[#0d2e21] cursor-pointer hover:bg-[#0d2e21]'
+                  className={`flex justify-between items-center px-6 py-5 border-b ${dark ? 'border-[#0d2e21] hover:bg-[#0d2e21] text-white' : 'border-gray-200 hover:bg-gray-100 text-black'} cursor-pointer`}
                 >
-                  <p className='text-white font-bold'>{tz}</p>
+                  <p className='font-bold'>{tz}</p>
 
                   {selected === tz ? (
                     <div className='w-7 h-7 rounded-full bg-[#2FE38A] flex justify-center items-center'>
@@ -390,78 +400,78 @@ const Accountprofile = () => {
       {isOpen7 && (
         <div onClick={() => setIsOpen7(false)} className="fixed inset-0 bg-black/40 z-40" />
       )}
-      <div className={`fixed top-0 right-0 h-screen scrollbar-none w-full sm:w-[420px] bg-[#061b09] shadow-2xl z-50 p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen7 ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed top-0 right-0 h-screen scrollbar-none w-full sm:w-[420px] ${panelBg} shadow-2xl z-50 p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen7 ? "translate-x-0" : "translate-x-full"}`}>
         <div className='flex flex-row gap-2'>
-          <p onClick={() => setIsOpen7(false)} className='text-[#52675c] pt-4'><FaChevronLeft /></p>
-          <h1 className='font-bold text-white text-base mt-3'>Personal Details</h1>
+          <p onClick={() => setIsOpen7(false)} className={`${mutedText} pt-4`}><FaChevronLeft /></p>
+          <h1 className={`font-bold ${pageText} text-base mt-3`}>Personal Details</h1>
         </div>
-        <div className='bg-[#061b09] pt-6  w-full  flex flex-col gap-5'>
-          <h1 className='font-bold text-white text-sm'>Basic details</h1>
+        <div className={`${panelBg} pt-6  w-full  flex flex-col gap-5`}>
+          <h1 className={`font-bold ${pageText} text-sm`}>Basic details</h1>
           <div className='flex flex-col gap-1'>
             <input
               type='text'
               placeholder='Legal first name'
-              className='w-full bg-transparent border rounded-lg p-4 text-white placeholder-[#52675c] outline-none transition-colors duration-200 border-[#1f3d31] focus:border-[#03d47c]' />
+              className={`w-full bg-transparent border rounded-lg p-4 ${pageText} ${inputPlaceholder} outline-none transition-colors duration-200 ${inputBorder}`} />
           </div>
 
           <input
             type='text'
             placeholder='Legal last name'
-            className='w-full bg-transparent border border-[#1f3d31] focus:border-[#03d47c] rounded-lg p-4 text-white placeholder-[#52675c] outline-none transition-colors duration-200'
+            className={`w-full bg-transparent border ${inputBorder} rounded-lg p-4 ${pageText} ${inputPlaceholder} outline-none transition-colors duration-200`}
           />
 
           <div className='flex flex-col gap-1'>
-            <label className='text-[#52675c] text-sm'>Date</label>
+            <label className={`${mutedText} text-sm`}>Date</label>
             <input
               type='date'
               placeholder='YYYY-MM-DD'
-              className='w-full bg-transparent border border-[#1f3d31] focus:border-[#03d47c] rounded-lg p-4 text-[#52675c]  placeholder-[#52675c] outline-none transition-colors duration-200'
+              className={`w-full bg-transparent border ${inputBorder} rounded-lg p-4 ${mutedText} ${inputPlaceholder} outline-none transition-colors duration-200`}
             />
           </div>
 
           <input
             type='tel'
             placeholder='Phone number'
-            className='w-full bg-transparent border border-[#1f3d31] focus:border-[#03d47c] rounded-lg p-4 text-white placeholder-[#52675c] outline-none transition-colors duration-200'
+            className={`w-full bg-transparent border ${inputBorder} rounded-lg p-4 ${pageText} ${inputPlaceholder} outline-none transition-colors duration-200`}
           />
 
-          <h1 className='font-bold text-white text-sm mt-2'>Address</h1>
+          <h1 className={`font-bold ${pageText} text-sm mt-2`}>Address</h1>
 
           <input
             type='text'
             placeholder='Address line 1'
-            className='w-full bg-transparent required border border-[#1f3d31] focus:border-[#03d47c] rounded-lg p-4 text-white placeholder-[#52675c] outline-none transition-colors duration-200'
+            className={`w-full bg-transparent required border ${inputBorder} rounded-lg p-4 ${pageText} ${inputPlaceholder} outline-none transition-colors duration-200`}
           />
 
           <input
             type='text'
             placeholder='Address line 2'
-            className='w-full bg-transparent border border-[#1f3d31] focus:border-[#03d47c] rounded-lg p-4 text-white placeholder-[#52675c] outline-none transition-colors duration-200'
+            className={`w-full bg-transparent border ${inputBorder} rounded-lg p-4 ${pageText} ${inputPlaceholder} outline-none transition-colors duration-200`}
           />
 
           <input
             type='text'
             placeholder='City'
-            className='w-full bg-transparent border border-[#1f3d31] focus:border-[#03d47c] rounded-lg p-4 text-white placeholder-[#52675c] outline-none transition-colors duration-200'
+            className={`w-full bg-transparent border ${inputBorder} rounded-lg p-4 ${pageText} ${inputPlaceholder} outline-none transition-colors duration-200`}
           />
 
           <input
             type='text'
             placeholder='State / Province'
-            className='w-full bg-transparent border border-[#1f3d31] focus:border-[#03d47c] rounded-lg p-4 text-white placeholder-[#52675c] outline-none transition-colors duration-200'
+            className={`w-full bg-transparent border ${inputBorder} rounded-lg p-4 ${pageText} ${inputPlaceholder} outline-none transition-colors duration-200`}
           />
 
           <input
             type='text'
             placeholder='Zip / Postcode'
-            className='w-full bg-transparent border border-[#1f3d31] focus:border-[#03d47c] rounded-lg p-4 text-white placeholder-[#52675c] outline-none transition-colors duration-200'
+            className={`w-full bg-transparent border ${inputBorder} rounded-lg p-4 ${pageText} ${inputPlaceholder} outline-none transition-colors duration-200`}
           />
           <div className='pdiv rounded-lg p-4 flex flex-row justify-between items-center cursor-pointer'>
             <div>
-              <h2 className='text-[#52675c] text-sm'>Country</h2>
-              <p className='text-white text-lg font-semibold'>Pakistan</p>
+              <h2 className={`${mutedText} text-sm`}>Country</h2>
+              <p className={`${pageText} text-lg font-semibold`}>Pakistan</p>
             </div>
-            <FaChevronRight className='text-[#52675c]' />
+            <FaChevronRight className={mutedText} />
           </div>
           <button onClick={() => setIsOpen7(false)} className='w-full rounded-4xl text-xl text-white bg-[#03d47c] font-bold p-4 mt-2'>
             Save
@@ -475,16 +485,16 @@ const Accountprofile = () => {
       {isOpen8 && (
         <div onClick={() => setIsOpen8(false)} className="fixed inset-0 bg-black/40 z-[60]" />
       )}
-      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] bg-[#061b09] shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen8 ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] ${panelBg} shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen8 ? "translate-x-0" : "translate-x-full"}`}>
         <div className='flex flex-row gap-2'>
-          <p onClick={() => setIsOpen8(false)} className='text-[#52675c] pt-4'><FaChevronLeft /></p>
-          <h1 className='font-bold text-white text-base mt-3'>Pronouns</h1>
+          <p onClick={() => setIsOpen8(false)} className={`${mutedText} pt-4`}><FaChevronLeft /></p>
+          <h1 className={`font-bold ${pageText} text-base mt-3`}>Pronouns</h1>
         </div>
         <div className='mt-5'>
-          <p className='text-white'>Your pronouns are shown on your profile.</p>
+          <p className={pageText}>Your pronouns are shown on your profile.</p>
         </div>
         <div className='mt-5'>
-          <input className='w-full p-1 text-white border-[#153427] ' placeholder='search to see options' type="text" />
+          <input className={`w-full p-1 ${pageText} ${dark ? 'border-[#153427]' : 'border-gray-300'}`} placeholder='search to see options' type="text" />
         </div>
       </div>
 
@@ -493,14 +503,14 @@ const Accountprofile = () => {
       {isOpen9 && (
         <div onClick={() => setIsOpen9(false)} className="fixed inset-0 bg-black/40 z-[60]" />
       )}
-      <div className={`fixed top-0 right-0 h-screen scrollbar-none w-full sm:w-[420px] bg-[#061b09] shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen9 ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed top-0 right-0 h-screen scrollbar-none w-full sm:w-[420px] ${panelBg} shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen9 ? "translate-x-0" : "translate-x-full"}`}>
         <div className='flex flex-row gap-2'>
-          <p onClick={() => setIsOpen9(false)} className='text-[#52675c] pt-4'><FaChevronLeft /></p>
-          <h1 className='font-bold text-white text-base mt-3'>Clear After</h1>
+          <p onClick={() => setIsOpen9(false)} className={`${mutedText} pt-4`}><FaChevronLeft /></p>
+          <h1 className={`font-bold ${pageText} text-base mt-3`}>Clear After</h1>
         </div>
-        <div className='bg-[#061b09] pt-6 w-full  flex flex-col justify-between h-auto'>
+        <div className={`${panelBg} pt-6 w-full  flex flex-col justify-between h-auto`}>
           <div className='flex flex-col gap-8'>
-            <h1 className='font-bold text-white text-base'>When should we clear your status?</h1>
+            <h1 className={`font-bold ${pageText} text-base`}>When should we clear your status?</h1>
 
             <div className='flex flex-col gap-8'>
               {options.map((option) => (
@@ -509,7 +519,7 @@ const Accountprofile = () => {
                   onClick={() => setClearance(option)}
                   className='flex flex-row justify-between items-center cursor-pointer'
                 >
-                  <p className='text-white text-lg font-semibold'>{option}</p>
+                  <p className={`${pageText} text-lg font-semibold`}>{option}</p>
 
                   {clearance === option ? (
                     <div className='w-7 h-7 rounded-full bg-[#2FE38A] flex justify-center items-center'>
@@ -538,86 +548,86 @@ const Accountprofile = () => {
 
       {/* Real UI  */}
 
-      <div className='w-full h-15  text-white flex flex-row gap-2 p-2 pl-4  '>
+      <div className={`w-full h-15 ${pageText} flex flex-row gap-2 p-2 pl-4`}>
         <FaUserCircle size={40} className='text-[#4ed7de]' />
         <h2 className='frances text-2xl mt-1'>Profile</h2>
 
       </div>
-      <div className='w-170 h-auto  mt-10 ml-4 p-8 flex flex-col gap-4 rounded-2xl  bg-[#072419]'>
+      <div className={`w-170 h-auto mt-10 ml-4 p-8 flex flex-col gap-4 rounded-2xl ${cardBg}`}>
         <div>
-          <p className='frances text-2xl text-white'>Public</p>
-          <p className='text-md text-white/80'>These details are displayed on your public profile. Anyone can see them.</p>
+          <p className={`frances text-2xl ${pageText}`}>Public</p>
+          <p className={`text-md ${softText}`}>These details are displayed on your public profile. Anyone can see them.</p>
         </div>
-        <LuCircleUserRound size={100} className='text-white' />
+        <LuCircleUserRound size={100} className={pageText} />
         <div className='pdiv rounded-lg p-2 flex flex-row'>
-          <div onClick={() => setIsOpen3(true)} className=' w-full text-white'>
-            <h2 className='text-white/80 text-sm'>Display Name</h2>
-            <div className='flex flex-row gap-1 text-base text-white'>
+          <div onClick={() => setIsOpen3(true)} className={` w-full ${pageText}`}>
+            <h2 className={`${softText} text-sm`}>Display Name</h2>
+            <div className={`flex flex-row gap-1 text-base ${pageText}`}>
               <p>{firstName || "Mubashir"}</p>
               <p>{lastName || "Imran"}</p>
             </div>
           </div>
-          <p className='text-[#52675c] pt-4'><FaChevronRight /></p>
+          <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
         </div>
         <div className='pdiv rounded-lg p-2 flex flex-row'>
-          <div onClick={() => setIsOpen(true)} className=' w-full text-white'>
-            <h2 className='text-white/80 text-sm'>Contact Methods</h2>
+          <div onClick={() => setIsOpen(true)} className={` w-full ${pageText}`}>
+            <h2 className={`${softText} text-sm`}>Contact Methods</h2>
             <p>Unimubashir2@gmail.com</p>
           </div>
-          <p className='text-[#52675c] pt-4'><FaChevronRight /></p>
+          <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
         </div>
         <div onClick={() => setIsOpen4(true)} className='pdiv rounded-lg p-2 flex flex-row'>
-          <div className=' w-full text-white'>
-            <h2 className='text-white/80 text-sm'>Status</h2>
+          <div className={` w-full ${pageText}`}>
+            <h2 className={`${softText} text-sm`}>Status</h2>
             <div className='flex flex-row gap-1'>
               {selectedEmoji && <span>{selectedEmoji}</span>}
-              <p className='text-white'>{statusText}</p>
+              <p className={pageText}>{statusText}</p>
 
             </div>
           </div>
-          <p className='text-[#52675c] pt-4'><FaChevronRight /></p>
+          <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
         </div>
         <div className='pdiv rounded-lg p-2 flex flex-row'>
-          <div onClick={() => setIsOpen8(true)} className=' w-full text-white'>
-            <h2 className='text-white/80 text-sm'>Pronouns</h2>
+          <div onClick={() => setIsOpen8(true)} className={` w-full ${pageText}`}>
+            <h2 className={`${softText} text-sm`}>Pronouns</h2>
             <p>Select your pronouns</p>
           </div>
-          <p className='text-[#52675c] pt-4'><FaChevronRight /></p>
+          <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
         </div>
         <div className='pdiv rounded-lg p-2 flex flex-row'>
-          <div onClick={() => setIsOpen5(true)} className=' w-full text-white'>
-            <h2 className='text-white/80 text-sm'>Timezone</h2>
+          <div onClick={() => setIsOpen5(true)} className={` w-full ${pageText}`}>
+            <h2 className={`${softText} text-sm`}>Timezone</h2>
             <p>{time || "America"}</p>
           </div>
-          <p className='text-[#52675c] pt-4'><FaChevronRight /></p>
+          <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
         </div>
 
         <button className='w-[12%] h-10 rounded-4xl bg-[#1A3D32] hover:bg-green-400 flex justify-center items-center text-center font-semibold m-2 text-white'>Share</button>
       </div>
-      <div className='bg-[#072419]   w-[75%] h-auto rounded-xl m-5 p-7 flex flex-col gap-9'>
+      <div className={`${cardBg} w-[75%] h-auto rounded-xl m-5 p-7 flex flex-col gap-9`}>
 
-        <p className='frances text-2xl text-white'>Private</p>
-        <p className='text-md text-white/80'>These details are used for travel and payments. They're never shown on your public profile.</p>
+        <p className={`frances text-2xl ${pageText}`}>Private</p>
+        <p className={`text-md ${softText}`}>These details are used for travel and payments. They're never shown on your public profile.</p>
 
         <div onClick={() => setIsOpen7(true)} className='flex flex-col gap-5'>
-          <div className='hover:bg-[#0A2E25] flex justify-between item-center p-3'>
-            <p className='text-base text-white/80'>Legal Name</p>
-            <p className='text-[#52675c] pt-2'><FaChevronRight /></p>
+          <div className={`${hoverRow} flex justify-between item-center p-3`}>
+            <p className={`text-base ${softText}`}>Legal Name</p>
+            <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
           </div>
 
-          <div className='hover:bg-[#0A2E25]  flex justify-between item-center p-3'>
-            <p className='text-base text-white/80'>Date of Birth</p>
-            <p className='text-[#52675c] pt-2'><FaChevronRight /></p>
+          <div className={`${hoverRow} flex justify-between item-center p-3`}>
+            <p className={`text-base ${softText}`}>Date of Birth</p>
+            <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
           </div>
 
-          <div className='hover:bg-[#0A2E25] flex justify-between item-center p-3'>
-            <p className='text-base text-white/80'>Phone Number</p>
-            <p className='text-[#52675c] pt-2'><FaChevronRight /></p>
+          <div className={`${hoverRow} flex justify-between item-center p-3`}>
+            <p className={`text-base ${softText}`}>Phone Number</p>
+            <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
           </div>
 
-          <div className='hover:bg-[#0A2E25] flex justify-between item-center p-3'>
-            <p className='text-base text-white/80'>Address</p>
-            <p className='text-[#52675c] pt-2'><FaChevronRight /></p>
+          <div className={`${hoverRow} flex justify-between item-center p-3`}>
+            <p className={`text-base ${softText}`}>Address</p>
+            <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
           </div>
 
         </div>
