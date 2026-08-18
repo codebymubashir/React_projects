@@ -122,3 +122,19 @@ html{
     position: absolute;
   }
 }
+.journalimg {
+  background-image: url(https://img.magnific.com/premium-photo/modern-house-featuring-large-panoramic-glass-walls-with-picturesque-desert-backdrop_641010-63729.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .journalimg {
+    min-height: 80vh;
+  }
+  .wrapper {
+    height: 80vh;
+    position: absolute;
+  }
+}

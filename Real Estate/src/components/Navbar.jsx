@@ -3,8 +3,9 @@ import Homeicon from '../assets/icon-transparent.png'
 import { MdOutlineMenu } from "react-icons/md";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
-const Navbar = ({background}) => {
+const Navbar = ({ background }) => {
 
   const [open, setOpen] = useState(false)
   return (
@@ -20,19 +21,27 @@ const Navbar = ({background}) => {
         {open && (
           <ul className='absolute top-full left-0 w-full bg-[#a48d5d] flex flex-col items-center gap-6 py-6 md:hidden shadow-lg'>
             <Link to={"/"}> <li className='frances text-black text-md font-semibold'><a href="">Home</a></li></Link>
-            <li className='frances text-black text-md font-semibold'><a href="">Listings</a></li>
-            <li className='frances text-black text-md font-semibold'><a href="#about">About</a></li>
-            <li className='frances text-black text-md font-semibold'><a href="#reviews">Reviews</a></li>
+            <Link to={"/journal"}><li className='frances text-black text-md font-semibold'><a href="">Journal</a></li></Link>
+            <li className='frances text-black text-md font-semibold'>
+              <HashLink smooth to="/#about">About</HashLink>
+            </li>
+           <li className='frances text-black text-md font-semibold'>
+              <HashLink smooth to="/#reviews">Reviews</HashLink>
+            </li>
             <Link to={"/contact"}> <li className='frances text-black text-md font-semibold'><a href="">Contact</a></li></Link>
           </ul>
         )}
         <div className='hidden md:block'>
           <ul className='flex flex-row text-white uppercase gap-4 w-120 h-auto p-5 justify-around '>
             <Link to={"/"}><li>Home</li></Link>
-            <a href="#about"><li>About</li></a>
-            <li>Journal</li>
+            <li>
+              <HashLink smooth to="/#about">About</HashLink>
+            </li>
+            <Link to={"/journal"}><li><a href="">Journal</a></li></Link>
             <Link to={"/contact"}> <li>Contact</li></Link>
-            <a href="#reviews"><li>Reviews</li></a>
+            <li>
+              <HashLink smooth to="/#reviews">Reviews</HashLink>
+            </li>
 
           </ul>
         </div>

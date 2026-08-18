@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const Contact = () => {
   return (
@@ -73,6 +74,24 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <div className='hidden md:block w-full h-screen p-44'>
+        <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-md">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=YOUR_EMBED_LINK"
+            className="w-full h-80 border-0"
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        
+
+      </div>
+      <div className='w-full h-10 block md:hidden'>
+
+        </div>
+        <Footer/>
     </div>
   )
 }
