@@ -30,7 +30,6 @@ const Contact = () => {
                     </label>
                     <input
                       type='text'
-                      name='name'
                       placeholder='Jane Whitfield'
                       required
                       className='w-full bg-transparent border-0 border-b border-[#d8d9d1]/30 text-[#f4efe4] text-sm py-2 px-0.5 outline-none placeholder:text-[#f4efe4]/35 focus:border-[#c9a868] transition-colors'
@@ -42,7 +41,6 @@ const Contact = () => {
                     </label>
                     <input
                       type='email'
-                      name='email'
                       placeholder='jane@email.com'
                       required
                       className='w-full bg-transparent border-0 border-b border-[#d8d9d1]/30 text-[#f4efe4] text-sm py-2 px-0.5 outline-none placeholder:text-[#f4efe4]/35 focus:border-[#c9a868] transition-colors'
@@ -53,7 +51,6 @@ const Contact = () => {
                       Your message
                     </label>
                     <textarea
-                      name='message'
                       rows='4'
                       placeholder='Tell us what you are looking for...'
                       required
@@ -62,7 +59,6 @@ const Contact = () => {
                   </div>
 
                   <button
-                    type='submit'
                     className='border border-[#c9a868] text-[#c9a868] hover:bg-[#c9a868] hover:text-[#12231c] font-serif tracking-[0.16em] uppercase text-xs py-3 sm:py-3.5 transition-colors'
                   >
                     Send inquiry

@@ -18,18 +18,18 @@ const Footer = () => {
         </div>
         <ul className='text-white flex flex-col gap-3'>
           <a href=""><li className='text-[#C9A868] footlist font-bold'>Navigate</li></a>
-          <a href=""><li className='footlist'>Home</li></a>
-          <a href="#about"><li className='footlist'>About</li></a>
-          <a href="/contact"><li className='footlist'>Contact</li></a>
-          <a href=""><li className='footlist'>Journal</li></a>
-          <a href="#reviews"><li className='footlist'>Customer reviews</li></a>
+         <Link to={"/"}> <a href=""><li className='footlist'>Home</li></a></Link>
+         <Link to={"/#about"}> <a href="#about"><li className='footlist'>About</li></a></Link>
+         <Link to={"/contact"}> <a href="/contact"><li className='footlist'>Contact</li></a></Link>
+         <Link to={"/journal"}> <a href=""><li className='footlist'>Journal</li></a></Link>
+         <Link> <a href="#reviews"><li className='footlist'>Customer reviews</li></a></Link>
         </ul>
         <ul className=' text-white flex flex-col gap-3'>
-          <a href=""><li className='text-[#C9A868] footlist font-bold'>Property Types</li></a>
-          <a href=""><li className='footlist'>House</li></a>
-          <a href=""><li className='footlist'>Appartments</li></a>
-          <a href=""><li className='footlist'>Villas</li></a>
-          <a href=""><li className='footlist'>Plot</li></a>
+         <Link> <a href=""><li className='text-[#C9A868] footlist font-bold'>Property Types</li></a></Link>
+         <Link to={"/journal"}> <a href=""><li className='footlist'>House</li></a></Link>
+         <Link to={"/journal"}> <a href=""><li className='footlist'>Appartments</li></a></Link>
+         <Link to={"/journal"}> <a href=""><li className='footlist'>Villas</li></a></Link>
+         <Link to={"/journal"}> <a href=""><li className='footlist'>Plot</li></a></Link>
         </ul>
         <div className='w-60 flex flex-col gap-4'>
           <p className='text-[#C9A868] text-xl font-bold'>Stay Informed</p>

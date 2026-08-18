@@ -6,6 +6,7 @@ import Reviews from '../components/Reviews'
 import Footer from '../components/Footer'
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
@@ -75,8 +76,8 @@ const Home = () => {
                                 <h1 className='frances text-3xl sm:text-4xl md:text-6xl font-bold text-white'>Homes Choosen for how they'll be <span className='text-[#a48d5d]'>lived in,</span> not just listed.</h1>
                                 <p className='text-sm sm:text-base text-[#c2bfb3]'>We represent a small number of exceptional properties at a time — each one walked, measured, and vetted by our own team before it ever reaches a buyer.</p>
                                 <div className='flex flex-col sm:flex-row gap-2'>
-                                    <button className='bg-black font-bold uppercase text-white p-4'>Browser Listing</button>
-                                    <button className='hidden md:block p-4 text-white border uppercase font-bold border-white'>Speak to an agent</button>
+                                  <Link to={"/journal"}> <button className='bg-black font-bold uppercase text-white p-4 hover:bg-[#A6811A]'>Browser Listing</button></Link> 
+                                   <Link to={"/contact"}> <button className='hidden md:block p-4 text-white border uppercase font-bold border-white'>Speak to an agent</button></Link>
                                 </div>
                             </div>
                             <div className='hidden md:block w-[50%] h-screen'>
@@ -193,7 +194,7 @@ const Home = () => {
                         <p className='text-sm'>Aldergate & Vane was founded in 2007 by two friends who thought Bahawalpur's property market deserved agents who actually visited what they sold. Nineteen years later, that's still the rule: nobody on our team lists a property they haven't walked themselves.</p>
                         <p className='hidden md:block'>We stayed intentionally small. Where larger agencies chase volume, we cap our active listings so every client — buyer or seller — gets a team that knows their file by name, not by number.</p>
                     </div>
-                    <button className='searchbtn text-base font-bold p-4 bg-black text-white mt-4'>Get In Touch</button>
+                  <Link to={"/contact"}> <button className='searchbtn w-full text-base font-bold p-4 bg-black text-white mt-4'>Get In Touch</button></Link> 
                 </div>
 
             </div>
@@ -255,7 +256,7 @@ const Home = () => {
             <div className='w-full h-auto md:mt-20 flex flex-col gap-4 p-6 text-center md:p-20 md:px-50 border-2 border-black bg-orange-900'>
                 <h2 className='frances text-white text-2xl sm:text-3xl md:text-5xl'>Thinking about buying, selling, or just curious what your home is worth?</h2>
                 <p className='text-gray-300 text-sm'>A conversation costs nothing and commits you to nothing.</p>
-                <button className='redsecbtn border border-white p-4 w-full md:w-60 md:mx-auto md:mt-5 text-center font-bold text-white bg-transparent'>Start the Conversation</button>
+               <Link to={"/contact"}><button className='redsecbtn border border-white p-4 w-full md:w-60 md:mx-auto md:mt-5 text-center font-bold text-white bg-transparent'>Start the Conversation</button></Link> 
 
             </div>
 
