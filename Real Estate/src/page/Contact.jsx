@@ -1,8 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from '../firebase';
 
 const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await addDoc(collection(db, "contactMessages"), {
+        name: name,
+        email: email,
+        message: message,
+        createdAt: serverTimestamp()
+      });
+
+      console.log("Message sent successfully:", email);
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (error) {
+      console.log("Message not sent:", error);
+    }
+  };
+
+
+
   return (
     <div>
       <Navbar />
@@ -23,12 +51,13 @@ const Contact = () => {
                 </p>
               </div>
               <div className='w-full md:w-1/2 md:ml-25 lg:w-[420px] p-6 sm:p-8 md:p-10 bg-[#12231C] rounded-lg border border-[#c9a868]/20'>
-                <form className='flex flex-col gap-5 sm:gap-6'>
+                <form onSubmit={handleSubmit} className='flex flex-col gap-5 sm:gap-6'>
                   <div>
                     <label className='block font-serif text-[10px] tracking-[0.18em] uppercase text-[#c9a868] mb-2'>
                       Full name
                     </label>
                     <input
+                      onChange={(e) => setName(e.target.value)}
                       type='text'
                       placeholder='Jane Whitfield'
                       required
@@ -40,6 +69,7 @@ const Contact = () => {
                       Email address
                     </label>
                     <input
+                      onChange={(e) => setEmail(e.target.value)}
                       type='email'
                       placeholder='jane@email.com'
                       required
@@ -51,6 +81,7 @@ const Contact = () => {
                       Your message
                     </label>
                     <textarea
+                      onChange={(e) => setMessage(e.target.value)}
                       rows='4'
                       placeholder='Tell us what you are looking for...'
                       required
@@ -59,6 +90,7 @@ const Contact = () => {
                   </div>
 
                   <button
+                    type='submit'
                     className='border border-[#c9a868] text-[#c9a868] hover:bg-[#c9a868] hover:text-[#12231c] font-serif tracking-[0.16em] uppercase text-xs py-3 sm:py-3.5 transition-colors'
                   >
                     Send inquiry
@@ -81,13 +113,13 @@ const Contact = () => {
           ></iframe>
         </div>
 
-        
+
 
       </div>
       <div className='w-full h-10 block md:hidden'>
 
-        </div>
-        <Footer/>
+      </div>
+      <Footer />
     </div>
   )
 }
