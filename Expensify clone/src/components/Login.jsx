@@ -1,9 +1,8 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { collection } from 'firebase/firestore'
+import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, getAuth } from 'firebase/auth'
+import { collection, addDoc } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { FaChevronRight, FaApple, FaGoogle } from "react-icons/fa"
 import { Link } from 'react-router-dom'
-import { auth } from '../firebase'
 import { db } from '../firebase'
 
 const Login = ({ onClose }) => {
@@ -11,12 +10,15 @@ const Login = ({ onClose }) => {
     const [email, setemail] = useState("")
     const [password, setPassword] = useState("")
 
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+
     const handleregistor = async (e) => {
         e.preventDefault();
 
         try {
             const userCrediential = await createUserWithEmailAndPassword(
-                auth,        // <-- was missing
+                auth,
                 email,
                 password,
             );
@@ -31,7 +33,17 @@ const Login = ({ onClose }) => {
             setPassword("");
 
         } catch (error) {
-            console.log("Error registering:", error.message)  // log full message, not just [object Object]
+            console.log("Error registering:", error.message)
+        }
+    }
+
+    const signInWithGoogle = async () => {
+        try {
+            const result = await signInWithPopup(auth, provider);
+            console.log(result.user);
+        }
+        catch (error) {
+            console.log("Error sign-in with Google!", error);
         }
     }
 
@@ -39,14 +51,15 @@ const Login = ({ onClose }) => {
         <div className='bg-[#07271F] w-[420px] h-auto p-5 rounded-2xl text-white relative'>
             <div className='flex justify-between items-center mb-4'>
                 <p className='text-[#2FE38A] text-3xl font-bold'>Expensify</p>
-                <button className='text-gray-400 hover:text-white text-2xl'>✕</button>
+                <button onClick={onClose} className='text-gray-400 hover:text-white text-2xl'>✕</button>
             </div>
             <h2 className='frances text-xl font-medium mb-4'>Welcome! How would you like to connect?</h2>
             <form onSubmit={handleregistor}>
                 <div className='mb-4'>
                     <input
                         type='email'
-                        onChange={(e)=>setemail(e.target.value)}
+                        value={email}
+                        onChange={(e) => setemail(e.target.value)}
                         placeholder='Email'
                         className='w-full bg-[#0d2e21] rounded-full py-5 px-6 font-semibold text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#2FE38A] transition-all'
                     />
@@ -55,7 +68,8 @@ const Login = ({ onClose }) => {
                 <div className='mb-8'>
                     <input
                         type='password'
-                        onChange={(e)=>setPassword(e.target.value)}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         placeholder='Password'
                         className='w-full bg-[#0d2e21] rounded-full py-5 px-6 font-semibold text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#2FE38A] transition-all'
                     />
@@ -66,12 +80,12 @@ const Login = ({ onClose }) => {
                 </button>
             </form>
             <div className='flex justify-center gap-4 mb-10'>
-                <button className='bg-white w-14 h-14 rounded-full flex justify-center items-center hover:scale-105 transition-all'>
+               <Link to={"homes"}><button className='bg-white w-14 h-14 rounded-full flex justify-center items-center hover:scale-105 transition-all'>
                     <FaApple size={24} className='text-black' />
-                </button>
-                <Link to={"/homes"} ><button className='bg-white w-14 h-14 rounded-full flex justify-center items-center hover:scale-105 transition-all'>
+                </button></Link> 
+                <button onClick={signInWithGoogle} className='bg-white w-14 h-14 rounded-full flex justify-center items-center hover:scale-105 transition-all'>
                     <FaGoogle size={24} className='text-[#4285F4]' />
-                </button></Link>
+                </button>
             </div>
             <h3 className='frances text-base font-medium mb-2'>Want to talk to our sales team instead?</h3>
             <button className='w-full bg-[#2FE38A] hover:bg-green-400 rounded-full py-3 px-6 flex justify-between items-center font-bold text-black mb-3 transition-all'>

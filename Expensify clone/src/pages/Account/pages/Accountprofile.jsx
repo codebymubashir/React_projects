@@ -7,6 +7,9 @@ import EmojiPicker from 'emoji-picker-react';
 import { Smile, ChevronDown, X } from 'lucide-react'
 import { FaUserCircle } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa"
+import { db } from '../../../firebase';
+import { getAuth } from 'firebase/auth';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 
 const Accountprofile = () => {
@@ -37,8 +40,10 @@ const Accountprofile = () => {
   const [clearance, setClearance] = useState("");
   const [rendclearance, setRendClearance] = useState("")
   const [time, setTime] = useState("")
-
-  // reusable theme classes -- taake har jagah ternary na likhna pade
+  const [name2, setName2] = useState("")
+  const [gmail2, setGmail2] = useState("")
+  const [status2, setStatus2] = useState("")
+  const [time2, setTime2] = useState("")
   const panelBg = dark ? 'bg-[#061b09]' : 'bg-white';
   const pageText = dark ? 'text-white' : 'text-[#0B2E1F]';
   const mutedText = dark ? 'text-[#52675c]' : 'text-gray-500';
@@ -138,6 +143,29 @@ const Accountprofile = () => {
     }
 
   }, [isOpen, isOpen2, isOpen3, isOpen4, isOpen5, isOpen6, isOpen7, isOpen8, isOpen9])
+
+
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    await addDoc(collection(db, "contactMessages"), {
+      firstName: firstName,
+      lastName: lastName,
+      status: status,
+      time: time,
+      createdAt: serverTimestamp()
+    });
+
+    console.log("Message sent successfully");
+
+  } catch (error) {
+    console.log("Message not sent:", error);
+  }
+};
+
+
 
 
   return (
@@ -559,77 +587,80 @@ const Accountprofile = () => {
           <p className={`text-md ${softText}`}>These details are displayed on your public profile. Anyone can see them.</p>
         </div>
         <LuCircleUserRound size={100} className={pageText} />
-        <div className='pdiv rounded-lg p-2 flex flex-row'>
-          <div onClick={() => setIsOpen3(true)} className={` w-full ${pageText}`}>
-            <h2 className={`${softText} text-sm`}>Display Name</h2>
-            <div className={`flex flex-row gap-1 text-base ${pageText}`}>
-              <p>{firstName || "Mubashir"}</p>
-              <p>{lastName || "Imran"}</p>
+        <form onSubmit={handleSubmit}>
+          <div className='pdiv rounded-lg p-2 flex flex-row'>
+            <div onClick={() => setIsOpen3(true)} className={` w-full ${pageText}`}>
+              <h2 className={`${softText} text-sm`}>Display Name</h2>
+              <div className={`flex flex-row gap-1 text-base ${pageText}`}>
+                <p>{firstName || "Mubashir"}</p>
+                <p>{lastName || "Imran"}</p>
+              </div>
             </div>
+            <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
           </div>
-          <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
-        </div>
-        <div className='pdiv rounded-lg p-2 flex flex-row'>
-          <div onClick={() => setIsOpen(true)} className={` w-full ${pageText}`}>
-            <h2 className={`${softText} text-sm`}>Contact Methods</h2>
-            <p>Unimubashir2@gmail.com</p>
-          </div>
-          <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
-        </div>
-        <div onClick={() => setIsOpen4(true)} className='pdiv rounded-lg p-2 flex flex-row'>
-          <div className={` w-full ${pageText}`}>
-            <h2 className={`${softText} text-sm`}>Status</h2>
-            <div className='flex flex-row gap-1'>
-              {selectedEmoji && <span>{selectedEmoji}</span>}
-              <p className={pageText}>{statusText}</p>
-
+          <div className='pdiv rounded-lg p-2 flex flex-row'>
+            <div onClick={() => setIsOpen(true)} className={` w-full ${pageText}`}>
+              <h2 className={`${softText} text-sm`}>Contact Methods</h2>
+              <p>Unimubashir2@gmail.com</p>
             </div>
+            <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
           </div>
-          <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
-        </div>
-        <div className='pdiv rounded-lg p-2 flex flex-row'>
-          <div onClick={() => setIsOpen8(true)} className={` w-full ${pageText}`}>
-            <h2 className={`${softText} text-sm`}>Pronouns</h2>
-            <p>Select your pronouns</p>
+          <div onClick={() => setIsOpen4(true)} className='pdiv rounded-lg p-2 flex flex-row'>
+            <div className={` w-full ${pageText}`}>
+              <h2 className={`${softText} text-sm`}>Status</h2>
+              <div className='flex flex-row gap-1'>
+                {selectedEmoji && <span>{selectedEmoji}</span>}
+                <p className={pageText}>{statusText}</p>
+
+              </div>
+            </div>
+            <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
           </div>
-          <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
-        </div>
-        <div className='pdiv rounded-lg p-2 flex flex-row'>
-          <div onClick={() => setIsOpen5(true)} className={` w-full ${pageText}`}>
-            <h2 className={`${softText} text-sm`}>Timezone</h2>
-            <p>{time || "America"}</p>
+          <div className='pdiv rounded-lg p-2 flex flex-row'>
+            <div onClick={() => setIsOpen8(true)} className={` w-full ${pageText}`}>
+              <h2 className={`${softText} text-sm`}>Pronouns</h2>
+              <p>Select your pronouns</p>
+            </div>
+            <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
           </div>
-          <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
-        </div>
-
-        <button className='w-[12%] h-10 rounded-4xl bg-[#1A3D32] hover:bg-green-400 flex justify-center items-center text-center font-semibold m-2 text-white'>Share</button>
-      </div>
-      <div className={`${cardBg} w-[75%] h-auto rounded-xl m-5 p-7 flex flex-col gap-9`}>
-
-        <p className={`frances text-2xl ${pageText}`}>Private</p>
-        <p className={`text-md ${softText}`}>These details are used for travel and payments. They're never shown on your public profile.</p>
-
-        <div onClick={() => setIsOpen7(true)} className='flex flex-col gap-5'>
-          <div className={`${hoverRow} flex justify-between item-center p-3`}>
-            <p className={`text-base ${softText}`}>Legal Name</p>
-            <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
+          <div className='pdiv rounded-lg p-2 flex flex-row'>
+            <div onClick={() => setIsOpen5(true)} className={` w-full ${pageText}`}>
+              <h2 className={`${softText} text-sm`}>Timezone</h2>
+              <p>{time || "America"}</p>
+            </div>
+            <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
           </div>
 
-          <div className={`${hoverRow} flex justify-between item-center p-3`}>
-            <p className={`text-base ${softText}`}>Date of Birth</p>
-            <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
-          </div>
+          <button type='submit' className='w-[12%] h-10 rounded-4xl bg-[#1A3D32] hover:bg-green-400 flex justify-center items-center text-center font-semibold m-2 text-white'>Share</button>
 
-          <div className={`${hoverRow} flex justify-between item-center p-3`}>
-            <p className={`text-base ${softText}`}>Phone Number</p>
-            <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
-          </div>
+        </form>
+        <div className={`${cardBg} w-[75%] h-auto rounded-xl m-5 p-7 flex flex-col gap-9`}>
 
-          <div className={`${hoverRow} flex justify-between item-center p-3`}>
-            <p className={`text-base ${softText}`}>Address</p>
-            <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
-          </div>
+          <p className={`frances text-2xl ${pageText}`}>Private</p>
+          <p className={`text-md ${softText}`}>These details are used for travel and payments. They're never shown on your public profile.</p>
 
+          <div onClick={() => setIsOpen7(true)} className='flex flex-col gap-5'>
+            <div className={`${hoverRow} flex justify-between item-center p-3`}>
+              <p className={`text-base ${softText}`}>Legal Name</p>
+              <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
+            </div>
+
+            <div className={`${hoverRow} flex justify-between item-center p-3`}>
+              <p className={`text-base ${softText}`}>Date of Birth</p>
+              <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
+            </div>
+
+            <div className={`${hoverRow} flex justify-between item-center p-3`}>
+              <p className={`text-base ${softText}`}>Phone Number</p>
+              <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
+            </div>
+
+            <div className={`${hoverRow} flex justify-between item-center p-3`}>
+              <p className={`text-base ${softText}`}>Address</p>
+              <p className={`${mutedText} pt-2`}><FaChevronRight /></p>
+            </div>
+
+          </div>
         </div>
       </div>
 
