@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+.frances{
+  font-family: "Fraunces", serif;
+}
+
+.btn{
+    margin-top: 1rem;
+
+}
+.btn:hover{
+    background-color: gray;
+    color: white;
+
+}
