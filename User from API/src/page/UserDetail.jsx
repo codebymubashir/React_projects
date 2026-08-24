@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 const UserDetail = () => {
 
     const { id } = useParams()
@@ -9,6 +11,7 @@ const UserDetail = () => {
     const [todos, setTodos] = useState([])
     const [comments, setComments] = useState([])
     const [albums, setAlbums] = useState([])
+    const [photos, setPhotos] = useState([])
     const [activeTab, setActiveTab] = useState("todos")
 
 
@@ -25,9 +28,26 @@ const UserDetail = () => {
             .then((res) => res.json())
             .then((data) => setComments(data))
 
+        // Pehle is user ke albums fetch karo
         fetch(`https://jsonplaceholder.typicode.com/albums?userId=${id}`)
             .then((res) => res.json())
-            .then((data) => setAlbums(data))
+            .then((albumsData) => {
+                setAlbums(albumsData)
+
+                // In albums ke IDs nikalo
+                const albumIds = albumsData.map((album) => album.id)
+
+                // Sab photos fetch karo, phir sirf apne albums wali filter karo
+                fetch(`https://jsonplaceholder.typicode.com/photos`)
+                    .then((res) => res.json())
+                    .then((allPhotos) => {
+                        const userPhotos = allPhotos.filter((photo) =>
+                            albumIds.includes(photo.albumId)
+                        )
+                        setPhotos(userPhotos)
+                    })
+            })
+
     }, [id])
 
 
@@ -35,7 +55,11 @@ const UserDetail = () => {
     if (!user) return <h2 className="p-6 text-lg">Loading...</h2>
 
     return (
-        <div className="w-full h-auto bg-gray-600">
+        <div className="w-full h-auto bg-gray-600 pt-5">
+
+            <Link to={"/"}>
+            <p className='text-white font-bold ml-15'>Back here</p>
+            </Link>
 
             <div className="max-w-4xl mx-auto p-6">
                 <div className="bg-white border rounded-2xl shadow-sm p-6 mb-6">
@@ -47,23 +71,20 @@ const UserDetail = () => {
                 </div>
 
                 <div className="flex gap-3 mb-6">
-                    {["todos", "comments", "albums"].map((tab) => (
+                    {["todos", "comments", "albums", "photos"].map((tab) => (
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
                             className={`px-4 py-2 rounded-lg text-sm font-semibold capitalize transition-colors ${activeTab === tab
-                                    ? "bg-indigo-600 text-white"
-                                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                ? "bg-indigo-600 text-white"
+                                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                                 }`}
                         >
                             {tab}
                         </button>
                     ))}
                 </div>
-
-                {/* Tab content */}
                 <div className="space-y-3">
-
                     {activeTab === "todos" && todos.map((todo) => (
                         <div key={todo.id} className="bg-white border rounded-lg p-3 flex items-center justify-between">
                             <span className="text-sm text-gray-700">{todo.title}</span>
@@ -82,12 +103,30 @@ const UserDetail = () => {
                         </div>
                     ))}
 
-                    {activeTab === "albums" && albums.map((album) => (
-                        <div key={album.id} className="bg-white border rounded-lg p-3">
-                            <p className="text-sm text-gray-700">{album.title}</p>
+                    {activeTab === "albums" && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            {albums.map((album) => (
+                                <div key={album.id} className="bg-white border rounded-lg p-3">
+                                    <p className="text-sm text-gray-700">{album.title}</p>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    )}
 
+                    {activeTab === "photos" && (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            {photos.map((photo) => (
+                                <div key={photo.id} className="bg-white border rounded-lg p-3">
+                                    <img
+                                        src={`https://picsum.photos/seed/${photo.id}/200/150`}
+                                        alt={photo.title}
+                                        className="w-full h-32 object-cover rounded-md"
+                                    />
+                                    <p className="text-xs text-gray-600 mt-2 line-clamp-2">{photo.title}</p>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
 
