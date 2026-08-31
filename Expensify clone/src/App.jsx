@@ -15,7 +15,7 @@ import Agents from "./pages/Account/pages/Agents";
 import useToggle from "./components/useToggle";
 function App() {
 
-  const [dark, toggleDark] = useToggle(false);
+  const [dark, toggleDark] = useToggle(true);
   return (
     <>
       <Navbar dark={dark} useToggle={toggleDark} />

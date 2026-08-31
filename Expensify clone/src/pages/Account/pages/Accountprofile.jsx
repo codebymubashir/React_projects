@@ -10,6 +10,9 @@ import { FaCheck } from "react-icons/fa"
 import { db } from '../../../firebase';
 import { getAuth } from 'firebase/auth';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import PronounsDiv from '../../../components/PronounsDiv';
+import { ChevronLeft } from 'lucide-react'
+
 
 
 const Accountprofile = () => {
@@ -52,6 +55,8 @@ const Accountprofile = () => {
   const inputPlaceholder = dark ? 'placeholder-[#52675c]' : 'placeholder-gray-400';
   const cardBg = dark ? 'bg-[#072419]' : 'bg-white border border-gray-200';
   const hoverRow = dark ? 'hover:bg-[#0A2E25]' : 'hover:bg-gray-100';
+
+  const [selectedPronoun, setSelectedPronoun] = useState(false);
 
   const options = ["Never", "30 minutes", "1 hour", "Today", "A week", "Custom"];
 
@@ -128,8 +133,18 @@ const Accountprofile = () => {
       setIsOpen9(false);
     }
 
-    if (!isOpen7) {
-      setIsOpen8(false);
+    // if (!isOpen7) {
+    //   setIsOpen8(false);
+    // }
+
+    if (isOpen8) {
+      setIsOpen(false);
+      setIsOpen2(false);
+      setIsOpen3(false);
+      setIsOpen4(false);
+      setIsOpen5(false);
+      setIsOpen6(false);
+      setIsOpen7(false);
     }
 
     if (isOpen9) {
@@ -147,23 +162,23 @@ const Accountprofile = () => {
 
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    await addDoc(collection(db, "contactMessages"), {
-      firstName: firstName,
-      lastName: lastName,
-      status: status,
-      time: time,
-      createdAt: serverTimestamp()
-    });
+    try {
+      await addDoc(collection(db, "contactMessages"), {
+        firstName: firstName,
+        lastName: lastName,
+        status: status,
+        time: time,
+        createdAt: serverTimestamp()
+      });
 
-    console.log("Message sent successfully");
+      console.log("Message sent successfully");
 
-  } catch (error) {
-    console.log("Message not sent:", error);
-  }
-};
+    } catch (error) {
+      console.log("Message not sent:", error);
+    }
+  };
 
 
 
@@ -513,16 +528,20 @@ const Accountprofile = () => {
       {isOpen8 && (
         <div onClick={() => setIsOpen8(false)} className="fixed inset-0 bg-black/40 z-[60]" />
       )}
-      <div className={`fixed top-0 right-0 h-screen w-full sm:w-[420px] ${panelBg} shadow-2xl z-[70] p-8 overflow-y-auto transform transition-transform duration-500 ease-in-out ${isOpen8 ? "translate-x-0" : "translate-x-full"}`}>
-        <div className='flex flex-row gap-2'>
-          <p onClick={() => setIsOpen8(false)} className={`${mutedText} pt-4`}><FaChevronLeft /></p>
-          <h1 className={`font-bold ${pageText} text-base mt-3`}>Pronouns</h1>
+      <div className={`absolute inter z-[70] overflow-hidden h-screen w-90 top-0 transition-all duration-500 ease-out text-white p-2 ${isOpen8 ? "left-[72%]" : "left-full"} ${dark ? "bg-[#061B09]" : "bg-white"}`}>
+
+        <div className='p-4 flex flex-start items-center gap-2'>
+          <ChevronLeft onClick={() => setIsOpen8(false)} size={25} className={dark ? 'text-white/80' : "text-gray-500"} />
+          <p className={`text-lg font-semibold ${dark ? 'text-white/80' : "text-gray-500"}`}>Pronouns</p>
         </div>
-        <div className='mt-5'>
-          <p className={pageText}>Your pronouns are shown on your profile.</p>
-        </div>
-        <div className='mt-5'>
-          <input className={`w-full p-1 ${pageText} ${dark ? 'border-[#153427]' : 'border-gray-300'}`} placeholder='search to see options' type="text" />
+
+        <PronounsDiv dark={dark} getter={selectedPronoun} setter={setSelectedPronoun} />
+
+        <div
+          onClick={() => setIsOpen8(false)}
+          className='w-[90%] relative top-4 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'
+        >
+          <p className='text-sm'>Save</p>
         </div>
       </div>
 
@@ -619,7 +638,7 @@ const Accountprofile = () => {
           <div className='pdiv rounded-lg p-2 flex flex-row'>
             <div onClick={() => setIsOpen8(true)} className={` w-full ${pageText}`}>
               <h2 className={`${softText} text-sm`}>Pronouns</h2>
-              <p>Select your pronouns</p>
+              <p>{selectedPronoun || "Select your pronouns"}</p>
             </div>
             <p className={`${mutedText} pt-4`}><FaChevronRight /></p>
           </div>
