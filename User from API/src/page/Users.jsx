@@ -1,15 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useGetUsersQuery } from './JsonPlaceholderApi'
 const Users = () => {
 
-    const [users, setUsers] = useState([])
+    const {data: users, isLoading, error} = useGetUsersQuery();
 
-    useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then((res) => res.json())
-            .then((data) => setUsers(data))
-    }, [])
+    if(isLoading) return <h1>Loading</h1>
+
+    if(error) return <h1>Error</h1>
+
     return (
         <div className="w-full h-auto bg-gray-600">
             <h1 className="text-white frances text-5xl font-bold pt-5 pl-5 ">Users</h1>
