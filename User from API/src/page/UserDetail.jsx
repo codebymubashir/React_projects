@@ -1,22 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import {
-    useGetUsersByIdQuery,
+    useGetUsersQuery,
     useGetCommentsByPostIdQuery,
     useGetTodosByUserIdQuery,
-} from './JsonPlaceholderApi'
+    useUpdateUserMutation,
+} from '../page/JsonPlaceholderApi'
+import UserFormModal from '../page/UserFormModal'
 
 const UserDetail = () => {
 
     const { id } = useParams()
+    const [showEdit, setShowEdit] = useState(false)
 
-    const { data: user, isLoading: userLoading } = useGetUsersByIdQuery(id);
+    const { data: users, isLoading: userLoading } = useGetUsersQuery();
     const { data: todos, isLoading: todosLoading } = useGetTodosByUserIdQuery(id);
     const { data: comments, isLoading: commentLoading } = useGetCommentsByPostIdQuery(id);
+    const [updateUser] = useUpdateUserMutation();
 
     const loading = userLoading || todosLoading || commentLoading
 
     if (loading) return <h1>Loading</h1>
+
+    const user = users?.find((u) => u.id === Number(id))
+
+    if (!user) {
+        return (
+            <div className="w-full h-auto bg-gray-600 pt-5 min-h-screen">
+                <Link to={"/"}>
+                    <p className='text-white font-bold ml-15'>Back here</p>
+                </Link>
+                <h1 className="text-white text-center mt-10">User not found</h1>
+            </div>
+        )
+    }
+
+    const handleEdit = async (data) => {
+        await updateUser({ id: user.id, ...data })
+        setShowEdit(false)
+    }
 
     // photos aur albums real API se fetch nahi ho rahe — picsum se locally generate kar rahe hain
     const photos = Array.from({ length: 12 }, (_, i) => ({
@@ -38,15 +60,24 @@ const UserDetail = () => {
 
             <div className="max-w-4xl mx-auto p-6">
 
-                {user.map((u) => (
-                    <div key={u.id} className="bg-white border rounded-2xl shadow-sm p-6 mb-6">
-                        <h1 className="text-2xl font-bold text-gray-800">{u.name}</h1>
-                        <p className="text-gray-500 mb-2">@{u.username}</p>
-                        <p className="text-gray-600">{u.email}</p>
-                        <p className="text-gray-600">{u.phone}</p>
-                        <p className="text-gray-600">{u.company.name}</p>
+                <div className="bg-white border rounded-2xl shadow-sm p-6 mb-6">
+                    <div className="flex items-start justify-between">
+                        <div>
+                            <h1 className="text-2xl font-bold text-gray-800">{user.name}</h1>
+                            <p className="text-gray-500 mb-2">@{user.username}</p>
+                        </div>
+                        <button
+                            onClick={() => setShowEdit(true)}
+                            className="bg-[#3D5AFE] text-white font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors"
+                        >
+                            Edit
+                        </button>
                     </div>
-                ))}
+                    <p className="text-gray-600">{user.email}</p>
+                    <p className="text-gray-600">{user.phone}</p>
+                    <p className="text-gray-600">{user.address?.city}</p>
+                    <p className="text-gray-600">{user.company?.name}</p>
+                </div>
 
                 <div className="space-y-3">
                     <h2 className="text-white font-bold text-lg mb-2">Todos</h2>
@@ -94,6 +125,14 @@ const UserDetail = () => {
                 </div>
             </div>
 
+            {showEdit && (
+                <UserFormModal
+                    title="Edit User"
+                    initialUser={user}
+                    onSubmit={handleEdit}
+                    onClose={() => setShowEdit(false)}
+                />
+            )}
         </div>
     )
 }

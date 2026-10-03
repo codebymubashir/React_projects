@@ -1,19 +1,49 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useGetUsersQuery } from './JsonPlaceholderApi'
+import {
+    useGetUsersQuery,
+    useDeleteUserMutation,
+    useAddUserMutation,
+} from '../page/JsonPlaceholderApi'
+import UserFormModal from '../page/UserFormModal'
+
 const Users = () => {
 
-    const {data: users, isLoading, error} = useGetUsersQuery();
+    const { data: users, isLoading, error } = useGetUsersQuery();
+    const [deleteUser] = useDeleteUserMutation();
+    const [addUser] = useAddUserMutation();
+    const [showAdd, setShowAdd] = useState(false);
 
-    if(isLoading) return <h1>Loading</h1>
+    const handleDelete = (id) => {
+        if (window.confirm('Are you sure you want to delete this user?')) {
+            deleteUser(id)
+        }
+    }
 
-    if(error) return <h1>Error</h1>
+    const handleAdd = async (data) => {
+        await addUser(data)
+        setShowAdd(false)
+    }
+
+    if (isLoading) return <h1>Loading</h1>
+
+    if (error) return <h1>Error</h1>
 
     return (
         <div className="w-full h-auto bg-gray-600">
-            <h1 className="text-white frances text-5xl font-bold pt-5 pl-5 ">Users</h1>
-            <p className='text-white text-base font-bold ml-6 mt-2'>You will get all users from here</p>
+            <div className="flex items-center justify-between pr-10">
+                <div>
+                    <h1 className="text-white frances text-5xl font-bold pt-5 pl-5 ">Users</h1>
+                    <p className='text-white text-base font-bold ml-6 mt-2'>You will get all users from here</p>
+                </div>
+                <button
+                    onClick={() => setShowAdd(true)}
+                    className="bg-[#3D5AFE] text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-indigo-700 transition-colors"
+                >
+                    + Add User
+                </button>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
                 {users.map((user) => (
                     <div
@@ -36,18 +66,33 @@ const Users = () => {
                             </div>
                             <div>
                                 <p className="text-[#6B7280] text-xs">Location</p>
-                                <p className="text-sm font-medium">{user.address.city}</p>
+                                <p className="text-sm font-medium">{user.address?.city}</p>
                             </div>
                         </div>
-                        <Link to={`/user/${user.id}`}>
-                            <button className="w-full font-semibold p-2.5 bg-[#3D5AFE] text-white rounded-lg hover:bg-indigo-700 transition-colors">
-                                View Detail
+                        <div className="flex gap-2">
+                            <Link to={`/user/${user.id}`} className="flex-1">
+                                <button className="w-full font-semibold p-2.5 bg-[#3D5AFE] text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                                    View Detail
+                                </button>
+                            </Link>
+                            <button
+                                onClick={() => handleDelete(user.id)}
+                                className="font-semibold px-4 p-2.5 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                            >
+                                Delete
                             </button>
-                        </Link>
+                        </div>
                     </div>
                 ))}
-
             </div>
+
+            {showAdd && (
+                <UserFormModal
+                    title="Add User"
+                    onSubmit={handleAdd}
+                    onClose={() => setShowAdd(false)}
+                />
+            )}
         </div>
     )
 }
