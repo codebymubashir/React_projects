@@ -1,22 +1,22 @@
 {
   "posts": [
     {
-      "title": "post1",
-      "body": "Some random posters",
-      "userId": "23",
-      "id": "1"
-    },
-    {
-      "title": "post2",
-      "body": "Some randomss posters",
-      "userId": "23",
-      "id": "2"
-    },
-    {
       "title": "halo",
       "body": "hsjlasfkosdfsodf",
       "userId": 593.8141298459226,
       "id": "dKii8j3oUfY"
+    },
+    {
+      "title": "haloghj",
+      "body": "i am mubashir imran",
+      "userId": 245.29097966928893,
+      "id": "Stj7qDlRdxM"
+    },
+    {
+      "title": "ertyui",
+      "body": "asdfghj",
+      "userId": 859.0739247982567,
+      "id": "aq8p1aASHOc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

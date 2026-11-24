@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-move-shape: moveShape 4s ease-in infinite alternate;
+  --animate-move-shape2: moveShape2 6s ease-in-out infinite alternate;
+  --animate-move-shape3: moveShape3 5s ease-in-out infinite alternate;
+}
+
+@keyframes moveShape {
+  0% {
+    transform: skewY(-12deg) translate(0, 0);
+  }
+  100% {
+    transform: skewY(-12deg) translate(450px, -70px);
+  }
+}
+
+@keyframes moveShape2 {
+  0% {
+    transform: skewY(-12deg) translate(0, 0);
+  }
+  100% {
+    transform: skewY(-12deg) translate(750px, -70px);
+  }
+}
+
+@keyframes moveShape3 {
+  0% {
+    transform: skewY(-12deg) translate(0, 0);
+  }
+  100% {
+    transform: skewY(-12deg) translate(750px, -70px);
+  }
+}
+
+
+.frances{
+  font-family: "Fraunces", serif;
+}
+.monospace{
+  font-family: monospace;
+}
+
+.dashlogo{
+  background-image: url(https://cdn.leonardo.ai/users/11f5eef8-ac65-4bdc-84ba-537fb9ee5412/generations/1f1aa840-63cf-6820-81f6-41f13e7cc59e/gpt-image-2_Minimalist_vector_logo_mark_for_an_edtech_platform_named_LearnX_featuring_an_abs-0.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.dashmenu:hover{
+  background-color: #99b2f1;
+  color: white;
+}
+.homedp{
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXg6JYjMiS2rwR_5xcpDXkdKQ_VkrVnXOmX_VKY8c-1OTLpKM8);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.student{
+  animation: Fade1 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes Fade1 {
+  0% {
+    transform: translateY(2.5rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

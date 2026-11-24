@@ -93,6 +93,10 @@ const Users = () => {
                     onClose={() => setShowAdd(false)}
                 />
             )}
+
+            <div>
+                <button className='border-2 p-2 text-black bg-transparent'>1</button>
+            </div>
         </div>
     )
 }
